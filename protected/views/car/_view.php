@@ -66,10 +66,6 @@
 	<?php echo CHtml::encode($data->user_id); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('image_id')); ?>:</b>
-	<?php echo CHtml::encode($data->image_id); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('is_active')); ?>:</b>
 	<?php echo CHtml::encode($data->is_active); ?>
 	<br />

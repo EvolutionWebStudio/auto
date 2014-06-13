@@ -27,9 +27,8 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		$model = Car::model()->findAllByAttributes(array('is_active'=> 1));
+		$this->render('index',array('model'=>$model));
 	}
 
 	/**
@@ -49,9 +48,10 @@ class SiteController extends Controller
 	/**
 	 * Displays the contact page
 	 */
-	public function actionContact()
+	public function actionKontakt()
 	{
 		$model=new ContactForm;
+		$contactInformations = Contact::model()->findbyAttributes(array('id'=>1));
 		if(isset($_POST['ContactForm']))
 		{
 			$model->attributes=$_POST['ContactForm'];
@@ -69,9 +69,17 @@ class SiteController extends Controller
 				$this->refresh();
 			}
 		}
-		$this->render('contact',array('model'=>$model));
+		$this->render('contact',array('model'=>$model, 'contactInformations'=>$contactInformations));
 	}
 
+	/**
+	 * Displays the About page
+	 */
+	public function actionO_nama()
+	{
+		$model = Page::model()->findByAttributes(array('id'=>1));
+		$this->render('o-nama',array('model'=>$model));
+	}
 	/**
 	 * Displays the login page
 	 */

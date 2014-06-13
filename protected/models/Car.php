@@ -19,13 +19,12 @@
  * @property integer $na_akciji
  * @property integer $mark_id
  * @property integer $user_id
- * @property integer $image_id
  * @property integer $is_active
  *
  * The followings are the available model relations:
  * @property Mark $mark
  * @property User $user
- * @property Image $image
+ * @property Image[] $images
  */
 class Car extends CActiveRecord
 {
@@ -45,14 +44,14 @@ class Car extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('mark_id, user_id, image_id', 'required'),
-			array('godiste, kilometraza, u_dolasku, na_akciji, mark_id, user_id, image_id, is_active', 'numerical', 'integerOnly'=>true),
+			array('mark_id, user_id', 'required'),
+			array('godiste, kilometraza, u_dolasku, na_akciji, mark_id, user_id, is_active', 'numerical', 'integerOnly'=>true),
 			array('naslov, model', 'length', 'max'=>120),
 			array('snaga, gorivo, transmisija, boja, cijena', 'length', 'max'=>45),
 			array('opis', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, naslov, model, godiste, snaga, kilometraza, gorivo, transmisija, boja, cijena, opis, u_dolasku, na_akciji, mark_id, user_id, image_id, is_active', 'safe', 'on'=>'search'),
+			array('id, naslov, model, godiste, snaga, kilometraza, gorivo, transmisija, boja, cijena, opis, u_dolasku, na_akciji, mark_id, user_id, is_active', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,7 +65,7 @@ class Car extends CActiveRecord
 		return array(
 			'mark' => array(self::BELONGS_TO, 'Mark', 'mark_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'image' => array(self::BELONGS_TO, 'Image', 'image_id'),
+			'images' => array(self::HAS_MANY, 'Image', 'car_id'),
 		);
 	}
 
@@ -91,7 +90,6 @@ class Car extends CActiveRecord
 			'na_akciji' => 'Na Akciji',
 			'mark_id' => 'Mark',
 			'user_id' => 'User',
-			'image_id' => 'Image',
 			'is_active' => 'Is Active',
 		);
 	}
@@ -129,7 +127,6 @@ class Car extends CActiveRecord
 		$criteria->compare('na_akciji',$this->na_akciji);
 		$criteria->compare('mark_id',$this->mark_id);
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('image_id',$this->image_id);
 		$criteria->compare('is_active',$this->is_active);
 
 		return new CActiveDataProvider($this, array(

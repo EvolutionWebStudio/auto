@@ -104,12 +104,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'image_id'); ?>
-		<?php echo $form->textField($model,'image_id'); ?>
-		<?php echo $form->error($model,'image_id'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'is_active'); ?>
 		<?php echo $form->textField($model,'is_active'); ?>
 		<?php echo $form->error($model,'is_active'); ?>

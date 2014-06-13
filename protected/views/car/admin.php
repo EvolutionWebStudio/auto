@@ -61,7 +61,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'na_akciji',
 		'mark_id',
 		'user_id',
-		'image_id',
 		'is_active',
 		*/
 		array(
