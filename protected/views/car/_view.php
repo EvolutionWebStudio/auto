@@ -33,7 +33,6 @@
 	<?php echo CHtml::encode($data->gorivo); ?>
 	<br />
 
-	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('transmisija')); ?>:</b>
 	<?php echo CHtml::encode($data->transmisija); ?>
 	<br />
@@ -70,6 +69,6 @@
 	<?php echo CHtml::encode($data->is_active); ?>
 	<br />
 
-	*/ ?>
+
 
 </div>
