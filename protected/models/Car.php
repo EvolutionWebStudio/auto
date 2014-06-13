@@ -127,7 +127,7 @@ class Car extends CActiveRecord
 		$criteria->compare('na_akciji',$this->na_akciji);
 		$criteria->compare('mark_id',$this->mark_id);
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('is_active',$this->is_active);
+		$criteria->compare('is_active',1);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

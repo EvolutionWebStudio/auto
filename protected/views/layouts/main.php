@@ -36,8 +36,8 @@
                 </div>
                 <div class="info-menu">
                     <ul>
-                        <li><a href="#">O nama</a></li>
-                        <li><a href="#">Kontakt</a></li>
+                        <li><?php echo CHtml::link('O nama',array('site/o_nama')); ?></li>
+                        <li><?php echo CHtml::link('Kontakt',array('site/kontakt')); ?></li>
                     </ul>
                 </div>
             </div>

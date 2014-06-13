@@ -15,6 +15,7 @@ class MainMenu extends CMenu
 	{
 		$criteria = new CDbCriteria;
 		$criteria->join = 'RIGHT JOIN Car on t.id = car.mark_id';
+		$criteria->condition = 'Car.is_active = 1';
 		$criteria->distinct=true;
 		$criteria->select = 'name';
 		$menus = Mark::model()->findAll($criteria);

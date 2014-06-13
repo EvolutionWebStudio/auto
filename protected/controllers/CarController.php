@@ -122,7 +122,36 @@ class CarController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Car');
+		if(isset($_GET['stanje'])) {
+			$stanje = str_replace('-','_',$_GET['stanje']);
+			if($stanje === 'u_dolasku' || $stanje === 'na_akciji')
+				$dataProvider=new CActiveDataProvider('Car',array(
+					'criteria'=>array(
+						'condition'=>'is_active=1 AND '.$stanje.'=1',
+					),
+				));
+			else
+				throw new CHttpException('404','Stranica ne postoji');
+		}
+		elseif(isset($_GET['proizvodjac'])) {
+			$proizvodjac = Mark::getId(str_replace('+',' ',$_GET['proizvodjac']));
+			if(!$proizvodjac)
+				throw new CHttpException('404','Stranica ne postoji');
+			$dataProvider=new CActiveDataProvider('Car',array(
+				'criteria'=>array(
+					'condition'=>'is_active=1 AND mark_id ='.$proizvodjac,
+				),
+			));
+		}
+		else {
+			$dataProvider=new CActiveDataProvider('Car',array(
+				'criteria'=>array(
+					'condition'=>'is_active=1',
+				),
+			));
+		}
+
+
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

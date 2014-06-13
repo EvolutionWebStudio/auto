@@ -97,4 +97,14 @@ class Mark extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public static function getId($name) {
+		$model = Mark::model()->findByAttributes(array(
+			'name' => $name,
+		));
+		if($model)
+			return $model->id;
+		else
+			return false;
+	}
 }
