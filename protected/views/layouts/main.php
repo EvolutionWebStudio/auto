@@ -19,53 +19,56 @@
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/modernizr.js"></script>
 </head>
 <body>
-	<?php if(!Yii::app()->user->isGuest):
-	$this->widget('AdminBar');
-	 endif; ?>
+	<?php
+        if(!Yii::app()->user->isGuest):
+	        $this->widget('AdminBar');
+	    endif;
+    ?>
     <!--[if lt IE 7]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
     <div class="row">
-        <header class="large-12 columns">
-            <div class="logo large-6 medium-6 columns"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/zuti-logo-auto-rasevic.png"/></div>
-            <div class="large-6 medium-6 columns">
-                <div class="car-logos show-for-medium-up">
-                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/auto-rasevic-header-car-logos.png"/>
+        <div class="main-wrapper clearfix">
+            <header class="large-12 columns">
+                <div class="logo large-6 medium-6 columns"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/zuti-logo-auto-rasevic.png"/></div>
+                <div class="large-6 medium-6 columns">
+                    <div class="car-logos show-for-medium-up">
+                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/auto-rasevic-header-car-logos.png"/>
+                    </div>
+                    <div class="info-menu">
+                        <ul>
+                            <li><a href="#">O nama</a></li>
+                            <li><a href="#">Kontakt</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="info-menu">
-                    <ul>
-                        <li><a href="#">O nama</a></li>
-                        <li><a href="#">Kontakt</a></li>
-                    </ul>
+            </header>
+
+            <div class="row">
+                <div class="sidebar large-3 columns">
+                    <nav class="main-menu">
+                        <?php $this->widget('MainMenu'); ?>
+                    </nav>
+                    <div class="promo-area">
+
+                    </div>
+                </div>
+
+                <div class="large-9 columns content">
+                    <?php echo $content; ?>
                 </div>
             </div>
-        </header>
 
-        <div class="row">
-            <div class="sidebar large-3 columns">
-                <nav class="main-menu">
-                    <?php $this->widget('MainMenu'); ?>
-                </nav>
-                <div class="promo-area">
-
+            <footer class="large-12 columns">
+                <hr/>
+                <div class="copyright">
+                    Copyright &copy; <?php echo date('Y'); ?> Auto Rašević.<br/>
+                    Website by <?php echo CHtml::link('matrix web team', 'http://www.matchomp.ba', array('target' => '_blank')); ?>
                 </div>
-            </div>
-
-            <div class="large-9 columns content">
-                <?php echo $content; ?>
-            </div>
+           </footer>
         </div>
-
-        <footer class="large-12 columns">
-            <div class="copyright">
-                Copyright &copy; <?php echo date('Y'); ?> Auto Rašević.<br/>
-                Website by <?php echo CHtml::link('matrix web team', 'http://www.matchomp.ba', array('target' => '_blank')); ?>
-            </div>
-
-       </footer>
-    </div>
     </div>
 
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.js"></script>
