@@ -38,20 +38,13 @@
                         <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/auto-rasevic-header-car-logos.png"/>
                     </div>
                     <div class="info-menu">
-                        <ul>
-                            <li><a href="#">O nama</a></li>
-                            <li><a href="#">Kontakt</a></li>
-                        </ul>
+	                    <ul>
+		                    <li><?php echo CHtml::link('O nama',array('site/o_nama')); ?></li>
+		                    <li><?php echo CHtml::link('Kontakt',array('site/kontakt')); ?></li>
+	                    </ul>
                     </div>
                 </div>
-                <div class="info-menu">
-                    <ul>
-                        <li><?php echo CHtml::link('O nama',array('site/o_nama')); ?></li>
-                        <li><?php echo CHtml::link('Kontakt',array('site/kontakt')); ?></li>
-                    </ul>
-                </div>
-            </div>
-        </header>
+            </header>
 
             <div class="row">
                 <div class="sidebar large-3 columns">
