@@ -19,6 +19,9 @@
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/modernizr.js"></script>
 </head>
 <body>
+	<?php if(!Yii::app()->user->isGuest):
+	$this->widget('AdminBar');
+	 endif; ?>
     <!--[if lt IE 7]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -43,7 +46,7 @@
         <div class="row">
             <div class="sidebar large-3 columns">
                 <nav class="main-menu">
-                    <?php echo $this->renderPartial('//common/_main-menu'); ?>
+                    <?php $this->widget('MainMenu'); ?>
                 </nav>
                 <div class="promo-area">
 
