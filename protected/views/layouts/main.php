@@ -26,14 +26,25 @@
     <!-- Add your site or application content here -->
     <div class="row">
         <header class="large-12 columns">
-            <div class="logo large-6 columns"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/zuti-logo-auto-rasevic.png"/></div>
+            <div class="logo large-6 medium-6 columns"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/zuti-logo-auto-rasevic.png"/></div>
+            <div class="large-6 medium-6 columns">
+                <div class="car-logos show-for-medium-up">
+                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/auto-rasevic-header-car-logos.png"/>
+                </div>
+                <div class="info-menu">
+                    <ul>
+                        <li><a href="#">O nama</a></li>
+                        <li><a href="#">Kontakt</a></li>
+                    </ul>
+                </div>
+            </div>
         </header>
 
         <div class="row">
             <div class="sidebar large-3 columns">
-                <div class="main-menu">
+                <nav class="main-menu">
                     <?php echo $this->renderPartial('//common/_main-menu'); ?>
-                </div>
+                </nav>
                 <div class="promo-area">
 
                 </div>
