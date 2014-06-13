@@ -24,5 +24,6 @@ $this->menu=array(
 		'id',
 		'order',
 		'link',
+		'car_id',
 	),
 )); ?>

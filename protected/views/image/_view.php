@@ -17,5 +17,9 @@
 	<?php echo CHtml::encode($data->link); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('car_id')); ?>:</b>
+	<?php echo CHtml::encode($data->car_id); ?>
+	<br />
+
 
 </div>

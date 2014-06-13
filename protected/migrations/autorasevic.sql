@@ -28,17 +28,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `autorasevic`.`image`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `autorasevic`.`image` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `order` INT NULL,
-  `link` VARCHAR(255) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `autorasevic`.`car`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `autorasevic`.`car` (
@@ -57,12 +46,10 @@ CREATE TABLE IF NOT EXISTS `autorasevic`.`car` (
   `na_akciji` TINYINT(1) NULL,
   `mark_id` INT NOT NULL,
   `user_id` INT NOT NULL,
-  `image_id` INT NOT NULL,
   `is_active` TINYINT(1) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_car_mark_idx` (`mark_id` ASC),
   INDEX `fk_car_user1_idx` (`user_id` ASC),
-  INDEX `fk_car_image1_idx` (`image_id` ASC),
   CONSTRAINT `fk_car_mark`
     FOREIGN KEY (`mark_id`)
     REFERENCES `autorasevic`.`mark` (`id`)
@@ -72,10 +59,23 @@ CREATE TABLE IF NOT EXISTS `autorasevic`.`car` (
     FOREIGN KEY (`user_id`)
     REFERENCES `autorasevic`.`user` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_car_image1`
-    FOREIGN KEY (`image_id`)
-    REFERENCES `autorasevic`.`image` (`id`)
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `autorasevic`.`image`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `autorasevic`.`image` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `order` INT NULL,
+  `link` VARCHAR(255) NULL,
+  `car_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_image_car1_idx` (`car_id` ASC),
+  CONSTRAINT `fk_image_car1`
+    FOREIGN KEY (`car_id`)
+    REFERENCES `autorasevic`.`car` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

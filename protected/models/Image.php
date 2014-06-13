@@ -7,9 +7,10 @@
  * @property integer $id
  * @property integer $order
  * @property string $link
+ * @property integer $car_id
  *
  * The followings are the available model relations:
- * @property Car[] $cars
+ * @property Car $car
  */
 class Image extends CActiveRecord
 {
@@ -29,11 +30,12 @@ class Image extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('order', 'numerical', 'integerOnly'=>true),
+			array('car_id', 'required'),
+			array('order, car_id', 'numerical', 'integerOnly'=>true),
 			array('link', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, order, link', 'safe', 'on'=>'search'),
+			array('id, order, link, car_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -45,7 +47,7 @@ class Image extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'cars' => array(self::HAS_MANY, 'Car', 'image_id'),
+			'car' => array(self::BELONGS_TO, 'Car', 'car_id'),
 		);
 	}
 
@@ -58,6 +60,7 @@ class Image extends CActiveRecord
 			'id' => 'ID',
 			'order' => 'Order',
 			'link' => 'Link',
+			'car_id' => 'Car',
 		);
 	}
 
@@ -82,6 +85,7 @@ class Image extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('order',$this->order);
 		$criteria->compare('link',$this->link,true);
+		$criteria->compare('car_id',$this->car_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

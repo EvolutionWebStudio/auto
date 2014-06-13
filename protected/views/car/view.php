@@ -36,7 +36,6 @@ $this->menu=array(
 		'na_akciji',
 		'mark_id',
 		'user_id',
-		'image_id',
 		'is_active',
 	),
 )); ?>
