@@ -173,7 +173,7 @@ class Car extends CActiveRecord
      */
     public function getMainImage($size = 'original')
     {
-        $imagesPath = Yii::app()->request->getBaseUrl(true).'/media/';
+        $imagesPath = Yii::app()->request->getBaseUrl(true).'/media/'.$this->mark->name.'/'.$this->id.'/';
         if($size == 'thumbnail')
             $imagesPath .= 'thumbs/';
         else if ($size == 'slider')

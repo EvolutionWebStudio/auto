@@ -10,15 +10,20 @@ $this->menu=array(
 );
 ?>
 
-<h1>Cars</h1>
+<div class="page car-list clearfix">
+    <div class="large-12 columns">
+        <?php $this->widget('zii.widgets.CListView', array(
+            'dataProvider'=>$dataProvider,
+            'itemView'=>$view,
+            'sortableAttributes'=>array(
+                'godiste',
+                'cijena',
+                'kilometraza'
+            ),
+            'template' => '{sorter} {items} {pager}',
+            'emptyText'=>'<span data-alert class="alert-box info">Trenutno nema ni jedan automobil.</span>'
+        )); ?>
+    </div>
+</div>
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>$view,
-	'sortableAttributes'=>array(
-		'godiste',
-		'cijena',
-		'kilometraza'
-	),
-	'emptyText'=>'Trenutno nema ni jedan automobil'
-)); ?>
+

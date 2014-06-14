@@ -62,7 +62,6 @@
             </div>
 
             <footer class="large-12 columns">
-                <hr/>
                 <div class="copyright">
                     Copyright &copy; <?php echo date('Y'); ?> Auto Rašević.<br/>
                     Website by <?php echo CHtml::link('matrix web team', 'http://www.matchomp.ba', array('target' => '_blank')); ?>

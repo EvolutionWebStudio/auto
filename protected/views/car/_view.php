@@ -3,73 +3,31 @@
 /* @var $data Car */
 ?>
 
-<div class="page ">
+<div class="row car-list-item">
+    <div class="large-3 columns car-image">
+        <div class="image-wrapper">
+            <img src="<?php echo $data->getMainImage('thumbnail'); ?>"/>
+        </div>
+    </div>
 
-    
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('naslov')); ?>:</b>
-	<?php echo CHtml::encode($data->naslov); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('model')); ?>:</b>
-	<?php echo CHtml::encode($data->model); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('godiste')); ?>:</b>
-	<?php echo CHtml::encode($data->godiste); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('snaga')); ?>:</b>
-	<?php echo CHtml::encode($data->snaga); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('kilometraza')); ?>:</b>
-	<?php echo CHtml::encode($data->kilometraza); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('gorivo')); ?>:</b>
-	<?php echo CHtml::encode($data->gorivo); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('transmisija')); ?>:</b>
-	<?php echo CHtml::encode($data->transmisija); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('boja')); ?>:</b>
-	<?php echo CHtml::encode($data->boja); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('cijena')); ?>:</b>
-	<?php echo CHtml::encode($data->cijena); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('opis')); ?>:</b>
-	<?php echo CHtml::encode($data->opis); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('u_dolasku')); ?>:</b>
-	<?php echo CHtml::encode($data->u_dolasku); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('na_akciji')); ?>:</b>
-	<?php echo CHtml::encode($data->na_akciji); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('mark_id')); ?>:</b>
-	<?php echo CHtml::encode($data->mark_id); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('user_id')); ?>:</b>
-	<?php echo CHtml::encode($data->user_id); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('is_active')); ?>:</b>
-	<?php echo CHtml::encode($data->is_active); ?>
-	<br />
-
-
-
+    <div class="large-6 columns">
+        <h2 class="car-title"><?php echo CHtml::link(CHtml::encode($data->naslov), array('view', 'id' => $data->id)); ?></h2>
+        <div class="car-description">
+            <?php echo CHtml::encode($data->opis); ?>
+        </div>
+    </div>
+    <div class="large-3 columns car-info">
+        <p>
+            <b><?php echo CHtml::encode($data->getAttributeLabel('godiste')); ?>:</b>
+            <?php echo CHtml::encode($data->godiste); ?>
+        </p>
+        <p>
+            <b><?php echo CHtml::encode($data->getAttributeLabel('kilometraza')); ?>:</b>
+            <?php echo CHtml::encode($data->kilometraza); ?>
+        </p>
+        <p>
+            <b><?php echo CHtml::encode($data->getAttributeLabel('gorivo')); ?>:</b>
+            <?php echo CHtml::encode($data->gorivo); ?>
+        </p>
+    </div>
 </div>

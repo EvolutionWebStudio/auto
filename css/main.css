@@ -104,8 +104,10 @@ textarea {
     margin-left: 0;
 }
 .page {
+    padding-top: 1em;
+    padding-bottom: 2em;
     margin-left: -30px;
-    margin-bottom: 1em;
+    border-left: 1px solid #ddd;
 }
 
 /* HEADER */
@@ -177,28 +179,67 @@ header {
         background: #444;
     }
 
+/* CAR LIST */
+
+.car-list .car-list-item {
+    padding-top: .5em;
+    padding-bottom: .5em;
+    border-bottom: 1px solid #ddd;
+}
+    .car-list .car-list-item:hover{
+        background: #e0e0e0;
+    }
+    .car-list .car-list-item:last-child{
+        border: none;
+    }
+    .car-list .car-image {
+        padding-right: 0;
+    }
+        .car-list .car-image img {
+            width: 100%;
+            border: 3px solid #f0f0f0;
+        }
+    .car-list .car-title {
+        font-size: 1.4em;
+        margin: 0;
+    }
+        .car-list .car-title a {
+            color: #333;
+        }
+            .car-list .car-title a:hover {
+                color: #000;
+            }
+    .car-list .car-description {
+        font-size: .9em;
+    }
+    .car-list .car-info p {
+        margin: 0;
+        font-size: .9em;
+    }
+
+
 /* ONE CAR */
 
-.car-title {
+.one-car .car-title {
     font-size: 1.8em;
     margin: .3em 0 .5em;
 }
-.car-info {
+.one-car .car-info {
     width: 100%;
 }
-    .car-info tr td {
+    .one-car .car-info tr td {
         padding: .5em;
     }
-    .car-info tr td:first-child {
+    .one-car .car-info tr td:first-child {
         font-weight: bold;
     }
-.car-price {
+.one-car .car-price {
     text-align: center;
     font-size: 1.3em;
     padding: .5em 0;
     background: #FFFAC6;
 }
-.car-slider {
+.one-car .car-slider {
     margin: 0;
 }
 .social-buttons {
@@ -235,6 +276,7 @@ footer {
     font-size: .8em;
     line-height: 1.3em;
     text-align: center;
+    border-top: 1px solid #ddd;
 }
     .copyright a {
         color: #444;
