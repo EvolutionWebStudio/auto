@@ -164,4 +164,42 @@ class Car extends CActiveRecord
 		);
 		return $types;
 	}
+
+    /**
+     * Returns main image of car
+     *
+     * @param string $size enum [thumbnail, slider, original]
+     * @return string path to image
+     */
+    public function getMainImage($size = 'original')
+    {
+        $imagesPath = Yii::app()->request->getBaseUrl(true).'/media/';
+        if($size == 'thumbnail')
+            $imagesPath .= 'thumbs/';
+        else if ($size == 'slider')
+            $imagesPath .= 'slider/';
+        else
+            $imagesPath .= 'original/';
+
+        return $imagesPath.$this->images[1]->link;
+    }
+
+    /**
+     * Returns custom facebook share link for this car
+     */
+    public function getFacebookShareUrl($carUrl)
+    {
+        //TODO napraviti link da radi
+        return 'https://www.facebook.com/sharer/sharer.php?s=100&p[title]=' . $this->naslov . '&p[summary]=' . $this->opis . '&p[url]=' . $carUrl . '&&p[images][0]='.$this->getMainImage('thumbnail');
+    }
+
+    /**
+     * Returns custom facebook share link for this car
+     */
+    public function getTwitterShareUrl($carUrl)
+    {
+        //TODO ne radi url
+        return 'http://twitter.com/share?url=' . $carUrl . '&text=' . $this->naslov . '&count=horiztonal';
+    }
+
 }
