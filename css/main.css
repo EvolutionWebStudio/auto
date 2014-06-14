@@ -101,7 +101,11 @@ textarea {
     background: #f0f0f0;
 }
 .content {
-    padding-left: 0;
+    margin-left: 0;
+}
+.page {
+    margin-left: -30px;
+    margin-bottom: 1em;
 }
 
 /* HEADER */
@@ -173,12 +177,6 @@ header {
         background: #444;
     }
 
-/* PAGE */
-
-.page {
-    margin-bottom: 1em;
-}
-
 /* ONE CAR */
 
 .car-title {
@@ -200,10 +198,31 @@ header {
     padding: .5em 0;
     background: #FFFAC6;
 }
-
 .car-slider {
     margin: 0;
 }
+.social-buttons {
+    margin: 1em 0;
+}
+    .social-buttons li {
+        width: 50%;
+    }
+    .social-buttons .button {
+        width: 100%;
+        padding: .5em 1em;
+    }
+        .social-buttons .button.facebook {
+            background: rgba(59,89,152, 0.8);
+        }
+            .social-buttons .button.facebook:hover {
+                background: rgba(59,89,152, 1);
+            }
+        .social-buttons .button.twitter {
+           background: rgba(42,169,225, 0.8);
+        }
+            .social-buttons .button.twitter:hover {
+                background: rgba(42,169,225, 1);
+            }
 
 /* FOOTER */
 
@@ -347,6 +366,51 @@ footer {
     /* Style adjustments for high resolution devices */
 }
 
+/*Small screens */
+@media only screen { }
+/* Define mobile styles */
+@media only screen and (max-width: 40em) {
+
+    .content {
+        padding-left: 15px;
+    }
+    .page {
+        margin-left: 0;
+    }
+}
+/* max-width 640px, mobile-only styles, use when QAing mobile issues */
+
+/*Medium screens */
+@media only screen and (min-width: 40.063em) {
+
+}
+/* min-width 641px, medium screens */
+@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+
+    .content {
+        padding-left: 15px;
+    }
+    .page {
+        margin-left: 0;
+    }
+}
+/* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
+
+/*Large screens */
+@media only screen and (min-width: 64.063em) { }
+/* min-width 1025px, large screens */
+@media only screen and (min-width: 64.063em) and (max-width: 90em) { }
+/* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
+
+/*XLarge screens */
+@media only screen and (min-width: 90.063em) { }
+/* min-width 1441px, xlarge screens */
+@media only screen and (min-width: 90.063em) and (max-width: 120em) { }
+/* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
+
+/*XXLarge screens */
+@media only screen and (min-width: 120.063em) { }
+/* min-width 1921px, xxlarge screens */
 /* ==========================================================================
    Print styles.
    Inlined to avoid required HTTP connection: h5bp.com/r
