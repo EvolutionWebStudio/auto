@@ -88,7 +88,12 @@ $imagesPath = Yii::app()->baseUrl.'/media/'.$model->mark->name.'/'.$model->id.'/
         <div class="car-price">
             <?php echo $model->cijena . ' KM'; ?>
         </div>
-
+		<?php if(!Yii::app()->user->isGuest): ?>
+			<ul class="button-group admin-buttons">
+				<li><?php echo CHtml::link('Izmjeni', array('car/update','id'=>$model->id),array('class' => 'button small')); ?></li>
+				<li><?php echo CHtml::link('Obriši', array('car/delete','id'=>$model->id),array('class' => 'button small')); ?></li>
+			</ul>
+		<?php endif; ?>
         <ul class="button-group social-buttons">
             <li><?php echo CHtml::link('<span class="fa fa-facebook"></span> Share', $model->getFacebookShareUrl(Yii::app()->request->url), array('rel' => 'nofollow', 'target' => '_blank', 'class' => 'button facebook small')); ?></li>
             <li><?php echo CHtml::link('<span class="fa fa-twitter"></span> Tweet', $model->getTwitterShareUrl(Yii::app()->request->url), array('rel' => 'nofollow', 'target' => '_blank', 'class' => 'button twitter small')); ?></li>

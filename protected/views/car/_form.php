@@ -30,7 +30,7 @@
 		<?php echo $form->labelEx($model,'mark_id'); ?>
 		<?php
 		$list = CHtml::listData(Mark::model()->findAll(), 'id', 'name');
-		echo CHtml::dropDownList('Car[mark_id]', $model, $list);
+		echo CHtml::dropDownList('Car[mark_id]', $model->mark_id, $list);
 		?>
 		<?php echo $form->error($model,'mark_id'); ?>
 	</div>
@@ -69,7 +69,7 @@
 		<?php echo $form->labelEx($model,'gorivo'); ?>
 		<?php
 		$list = Car::getFuelTypes();
-		echo CHtml::dropDownList('Car[gorivo]', $model, $list);
+		echo CHtml::dropDownList('Car[gorivo]', $model->gorivo, $list);
 		?>
 		<?php echo $form->error($model,'gorivo'); ?>
 	</div>
@@ -78,7 +78,7 @@
 		<?php echo $form->labelEx($model,'transmisija'); ?>
 		<?php
 		$list = Car::getTransmissionTypes();
-		echo CHtml::dropDownList('Car[transmisija]', $model, $list);
+		echo CHtml::dropDownList('Car[transmisija]', $model->transmisija, $list);
 		?>
 		<?php echo $form->error($model,'transmisija'); ?>
 	</div>
@@ -106,6 +106,7 @@
 		<?php echo $form->checkBox($model,'na_akciji'); ?>
 		<?php echo $form->error($model,'na_akciji'); ?>
 	</div>
+	<?php if(!$model->isNewRecord) $this->renderPartial('_images',array('model'=>$model)) ?>
 	<div>
 		<?php
 		$this->widget('CMultiFileUpload', array(
