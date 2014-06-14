@@ -202,4 +202,11 @@ class Car extends CActiveRecord
         return 'http://twitter.com/share?url=' . $carUrl . '&text=' . $this->naslov . '&count=horiztonal';
     }
 
+    public function getShortDescription()
+    {
+        if(strlen($this->opis)>250)
+            return substr($this->opis,0, 250).'...';
+        else
+            return $this->opis;
+    }
 }

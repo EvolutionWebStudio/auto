@@ -187,7 +187,7 @@ header {
     border-bottom: 1px solid #ddd;
 }
     .car-list .car-list-item:hover{
-        background: #e0e0e0;
+        background: #eaeaea;
     }
     .car-list .car-list-item:last-child{
         border: none;
@@ -197,11 +197,17 @@ header {
     }
         .car-list .car-image img {
             width: 100%;
-            border: 3px solid #f0f0f0;
+            border: 4px solid #fefefe;
+            border-radius: 2px;
+            outline: 1px solid #ddd;
         }
     .car-list .car-title {
+        margin-top: 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
         font-size: 1.4em;
-        margin: 0;
+
     }
         .car-list .car-title a {
             color: #333;
@@ -211,18 +217,44 @@ header {
             }
     .car-list .car-description {
         font-size: .9em;
+        line-height: 1.2em;
     }
-    .car-list .car-info p {
-        margin: 0;
-        font-size: .9em;
+    .car-list .car-info {
+        padding-left: 0;
     }
+        .car-list .car-info table {
+            width: 100%;
+            margin-bottom: .2em;
+        }
+        .car-list .car-info tr td {
+            padding: .3em .5em;
+            font-size: .8em;
+            background: #fafafa;
+        }
+        .car-list .car-info tr td:first-child {
+            font-weight: bold;
+        }
+    .car-list .car-price {
+        text-align: right;
+        font-size: 1em;
+        background: #FFFAC6;
+    }
+        .car-list .car-price span {
+            display: inline-block;
+            width: 70%;
+            text-align: center;
+        }
+        .car-list .car-price .button {
+            margin-bottom: 0;
+            padding: 1em 1.5em;
+        }
 
 
 /* ONE CAR */
 
 .one-car .car-title {
     font-size: 1.8em;
-    margin: .3em 0 .5em;
+    margin: 0 0 .5em;
 }
 .one-car .car-info {
     width: 100%;
@@ -241,6 +273,9 @@ header {
 }
 .one-car .car-slider {
     margin: 0;
+}
+.one-car .car-description {
+    line-height: 1.2em;
 }
 .social-buttons {
     margin: 1em 0;
@@ -285,7 +320,11 @@ footer {
             color: #333;
         }
 
+/* ADMIN NAVIGATION */
 
+.admin-navigation {
+
+}
 
 
 

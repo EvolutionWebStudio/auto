@@ -106,6 +106,5 @@ $imagesPath = Yii::app()->baseUrl.'/media/'.$model->mark->name.'/'.$model->id.'/
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/vendor/jquery.bxslider/jquery.bxslider.min.js', CClientScript::POS_END);
     $cs->registerCssFile($baseUrl.'/js/vendor/jquery.bxslider/jquery.bxslider.css');
-    $cs->registerCssFile($baseUrl.'/css/font-awesome.min.css');
     $cs->registerScript("bindBxslider","$('.bxslider').bxSlider({uceCSS:false,adaptiveHeight: true});", CClientScript::POS_END);
 ?>
