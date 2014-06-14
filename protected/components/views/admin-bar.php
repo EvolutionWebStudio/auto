@@ -26,6 +26,15 @@
 				<li>
 					<?php echo CHtml::link('Dodaj automobil',array('car/create')); ?>
 				</li>
+				<li>
+					<?php echo CHtml::link('Dodaj proizvođača',array('mark/admin')); ?>
+				</li>
+				<li>
+					<?php echo CHtml::link('O nama',array('page/update/1')); ?>
+				</li>
+				<li>
+					<?php echo CHtml::link('Kontakt',array('contact/update/1')); ?>
+				</li>
 			</ul>
 		</section>
 	</nav>

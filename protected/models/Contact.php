@@ -55,10 +55,10 @@ class Contact extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'email' => 'Email',
-			'phone' => 'Phone',
-			'links' => 'Links',
+			'name' => 'Ime',
+			'email' => 'E-mail',
+			'phone' => 'Telefon',
+			'links' => 'Linkovi',
 		);
 	}
 
