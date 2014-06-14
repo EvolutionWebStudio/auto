@@ -41,11 +41,13 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
+				'admin' => 'site/login',
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<proizvodjac:[\w\s\w]+>'=>'car/index',
 				'<stanje:[\w-\w]+>'=>'car/index',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+
 			),
 		),
 

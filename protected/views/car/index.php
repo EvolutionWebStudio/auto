@@ -2,9 +2,7 @@
 /* @var $this CarController */
 /* @var $dataProvider CActiveDataProvider */
 
-$this->breadcrumbs=array(
-	'Cars',
-);
+$view = '_view';
 
 $this->menu=array(
 	array('label'=>'Create Car', 'url'=>array('create')),
@@ -16,7 +14,7 @@ $this->menu=array(
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
+	'itemView'=>$view,
 	'sortableAttributes'=>array(
 		'godiste',
 		'cijena',

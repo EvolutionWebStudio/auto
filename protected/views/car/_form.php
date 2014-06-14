@@ -13,6 +13,7 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -23,6 +24,15 @@
 		<?php echo $form->labelEx($model,'naslov'); ?>
 		<?php echo $form->textField($model,'naslov',array('size'=>60,'maxlength'=>120)); ?>
 		<?php echo $form->error($model,'naslov'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'mark_id'); ?>
+		<?php
+		$list = CHtml::listData(Mark::model()->findAll(), 'id', 'name');
+		echo CHtml::dropDownList('Car[mark_id]', $model, $list);
+		?>
+		<?php echo $form->error($model,'mark_id'); ?>
 	</div>
 
 	<div class="row">
@@ -50,21 +60,27 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'boja'); ?>
+		<?php echo $form->textField($model,'boja',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'boja'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'gorivo'); ?>
-		<?php echo $form->textField($model,'gorivo',array('size'=>45,'maxlength'=>45)); ?>
+		<?php
+		$list = Car::getFuelTypes();
+		echo CHtml::dropDownList('Car[gorivo]', $model, $list);
+		?>
 		<?php echo $form->error($model,'gorivo'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'transmisija'); ?>
-		<?php echo $form->textField($model,'transmisija',array('size'=>45,'maxlength'=>45)); ?>
+		<?php
+		$list = Car::getTransmissionTypes();
+		echo CHtml::dropDownList('Car[transmisija]', $model, $list);
+		?>
 		<?php echo $form->error($model,'transmisija'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'boja'); ?>
-		<?php echo $form->textField($model,'boja',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'boja'); ?>
 	</div>
 
 	<div class="row">
@@ -81,34 +97,25 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'u_dolasku'); ?>
-		<?php echo $form->textField($model,'u_dolasku'); ?>
+		<?php echo $form->checkBox($model,'u_dolasku'); ?>
 		<?php echo $form->error($model,'u_dolasku'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'na_akciji'); ?>
-		<?php echo $form->textField($model,'na_akciji'); ?>
+		<?php echo $form->checkBox($model,'na_akciji'); ?>
 		<?php echo $form->error($model,'na_akciji'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'mark_id'); ?>
-		<?php echo $form->textField($model,'mark_id'); ?>
-		<?php echo $form->error($model,'mark_id'); ?>
+	<div>
+		<?php
+		$this->widget('CMultiFileUpload', array(
+			'name' => 'images',
+			'accept' => 'jpeg|jpg|gif|png', // useful for verifying files
+			'duplicate' => 'Duplicate file!', // useful, i think
+			'denied' => 'Invalid file type', // useful, i think
+			'htmlOptions' => array( 'multiple' => 'multiple', ),
+		)); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'user_id'); ?>
-		<?php echo $form->textField($model,'user_id'); ?>
-		<?php echo $form->error($model,'user_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'is_active'); ?>
-		<?php echo $form->textField($model,'is_active'); ?>
-		<?php echo $form->error($model,'is_active'); ?>
-	</div>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

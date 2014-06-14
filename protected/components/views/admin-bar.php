@@ -17,14 +17,14 @@
 					<a href="#">Right Button Dropdown</a>
 					<ul class="dropdown">
 						<li>
-							<a href="#">First link in dropdown</a>
+							<?php echo CHtml::link('Odjavi se',array('site/logout')); ?>
 						</li>
 					</ul>
 				</li>
 			</ul> <!-- Left Nav Section -->
 			<ul class="left">
 				<li>
-					<a href="#">Left Nav Button</a>
+					<?php echo CHtml::link('Dodaj automobil',array('car/create')); ?>
 				</li>
 			</ul>
 		</section>

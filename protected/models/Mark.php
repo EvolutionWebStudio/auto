@@ -107,4 +107,14 @@ class Mark extends CActiveRecord
 		else
 			return false;
 	}
+
+	public static function getName($id) {
+		$model = Mark::model()->findByAttributes(array(
+			'id' => $id,
+		));
+		if($model)
+			return $model->name;
+		else
+			return false;
+	}
 }

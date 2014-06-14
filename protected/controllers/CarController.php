@@ -70,8 +70,15 @@ class CarController extends Controller
 		if(isset($_POST['Car']))
 		{
 			$model->attributes=$_POST['Car'];
+
+			$model->user_id = Yii::app()->user->id;
+			$model->is_active = 1;
 			if($model->save())
+			{
+				$this->uploadImages($model);
 				$this->redirect(array('view','id'=>$model->id));
+			}
+
 		}
 
 		$this->render('create',array(
@@ -197,6 +204,45 @@ class CarController extends Controller
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
+		}
+	}
+
+	protected function uploadImages($model)
+	{
+		//Rjesiti se nasi slova u imenima proizvodjaca kod kreiranja foldera
+		$markFolderUrl = Yii::getPathOfAlias('webroot').'/media/'.Mark::getName($model->mark_id);
+		// make the directory to store the pic:
+		if(!is_dir($markFolderUrl))
+		{
+			mkdir($markFolderUrl);
+			chmod($markFolderUrl, 0755);
+		}
+		$imgFolderUrl = Yii::getPathOfAlias('webroot').'/media/'.Mark::getName($model->mark_id).'/'. $model->id;
+		if(!is_dir($imgFolderUrl))
+		{
+			mkdir($imgFolderUrl);
+			chmod($imgFolderUrl, 0755);
+			mkdir($imgFolderUrl.'/original');
+			chmod($imgFolderUrl.'/original', 0755);
+		}
+		$imgFolderUrl = Yii::getPathOfAlias('webroot').'/media/'.Mark::getName($model->mark_id).'/'. $model->id.'/original';
+		$images = CUploadedFile::getInstancesByName('images');
+		$order = 1;
+		if (isset($images) && count($images) > 0) {
+			foreach ($images as $image => $pic) {
+				echo $pic->name.'<br />';
+				if ($pic->saveAs($imgFolderUrl.'/'.$pic->name)) {
+					// add it to the main model now
+					$img_add = new Image();
+					$img_add->link = $pic->name; //it might be $img_add->name for you, filename is just what I chose to call it in my model
+					$img_add->car_id = $model->id; // this links your picture model to the main model (like your user, or profile model)
+					$img_add->order = $order++;
+					$img_add->save(); // DONE
+				}
+				else
+					throw new CHttpException('401');
+				// handle the errors here, if you want
+			}
 		}
 	}
 }

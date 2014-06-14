@@ -78,9 +78,9 @@ class Car extends CActiveRecord
 			'id' => 'ID',
 			'naslov' => 'Naslov',
 			'model' => 'Model',
-			'godiste' => 'Godiste',
+			'godiste' => 'Godina',
 			'snaga' => 'Snaga',
-			'kilometraza' => 'Kilometraza',
+			'kilometraza' => 'Kilometraža',
 			'gorivo' => 'Gorivo',
 			'transmisija' => 'Transmisija',
 			'boja' => 'Boja',
@@ -88,7 +88,7 @@ class Car extends CActiveRecord
 			'opis' => 'Opis',
 			'u_dolasku' => 'U Dolasku',
 			'na_akciji' => 'Na Akciji',
-			'mark_id' => 'Mark',
+			'mark_id' => 'Proizvođač',
 			'user_id' => 'User',
 			'is_active' => 'Is Active',
 		);
@@ -143,5 +143,25 @@ class Car extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+
+	public static function getFuelTypes()
+	{
+		$types = array(
+			'Dizel' => 'Dizel',
+			'Benzin' => 'Benzin',
+			'Plin' => 'Plin',
+		);
+		return $types;
+	}
+
+	public static function getTransmissionTypes()
+	{
+		$types = array(
+			'Automatska' => 'Automatska',
+			'Manuelna' => 'Manuelna',
+			'Poluautomatska' => 'Poluautomatska',
+		);
+		return $types;
 	}
 }
