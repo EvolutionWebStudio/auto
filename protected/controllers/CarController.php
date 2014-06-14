@@ -209,6 +209,35 @@ class CarController extends Controller
 
 	protected function uploadImages($model)
 	{
+
+		$imgFolderUrl = $this->createFoldersForImages($model);
+
+
+
+		$images = CUploadedFile::getInstancesByName('images');
+		$order = 1;
+		if (isset($images) && count($images) > 0) {
+			foreach ($images as $image => $pic) {
+				$newImageName = time() . '-auto-rasevic-pale-'.$order.'.'.$pic->extensionName;
+				if ($pic->saveAs($imgFolderUrl.'/'.$newImageName)) {
+					// add it to the main model now
+					$img_add = new Image();
+					$img_add->link = $newImageName; //it might be $img_add->name for you, filename is just what I chose to call it in my model
+					$img_add->car_id = $model->id; // this links your picture model to the main model (like your user, or profile model)
+					$img_add->order = $order++;
+					$img_add->save(); // DONE
+
+					$this->createThumbsAndSliderImages($imgFolderUrl.'/'.$newImageName);
+				}
+				else
+					throw new CHttpException('401');
+				// handle the errors here, if you want
+			}
+		}
+	}
+
+	protected function createFoldersForImages($model)
+	{
 		//Rjesiti se nasi slova u imenima proizvodjaca kod kreiranja foldera
 		$markFolderUrl = Yii::getPathOfAlias('webroot').'/media/'.Mark::getName($model->mark_id);
 		// make the directory to store the pic:
@@ -222,27 +251,33 @@ class CarController extends Controller
 		{
 			mkdir($imgFolderUrl);
 			chmod($imgFolderUrl, 0755);
+
 			mkdir($imgFolderUrl.'/original');
 			chmod($imgFolderUrl.'/original', 0755);
+
+			mkdir($imgFolderUrl.'/thumbs');
+			chmod($imgFolderUrl.'/thumbs', 0755);
+
+			mkdir($imgFolderUrl.'/slider');
+			chmod($imgFolderUrl.'/slider', 0755);
 		}
-		$imgFolderUrl = Yii::getPathOfAlias('webroot').'/media/'.Mark::getName($model->mark_id).'/'. $model->id.'/original';
-		$images = CUploadedFile::getInstancesByName('images');
-		$order = 1;
-		if (isset($images) && count($images) > 0) {
-			foreach ($images as $image => $pic) {
-				echo $pic->name.'<br />';
-				if ($pic->saveAs($imgFolderUrl.'/'.$pic->name)) {
-					// add it to the main model now
-					$img_add = new Image();
-					$img_add->link = $pic->name; //it might be $img_add->name for you, filename is just what I chose to call it in my model
-					$img_add->car_id = $model->id; // this links your picture model to the main model (like your user, or profile model)
-					$img_add->order = $order++;
-					$img_add->save(); // DONE
-				}
-				else
-					throw new CHttpException('401');
-				// handle the errors here, if you want
-			}
-		}
+
+		return Yii::getPathOfAlias('webroot').'/media/'.Mark::getName($model->mark_id).'/'. $model->id.'/original';
+	}
+
+	protected function createThumbsAndSliderImages($orginalUrl)
+	{
+		Yii::import("ext.EPhpThumb.EPhpThumb");
+
+		$thumbUrl = str_replace('original','thumbs',$orginalUrl);
+		$sliderUrl = str_replace('original','slider',$orginalUrl);
+
+		$thumb=new EPhpThumb();
+		$thumb->init(); //this is needed
+
+
+		//chain functions
+		$thumb->create($orginalUrl)->adaptiveResize(150,120)->save($thumbUrl);
+		$thumb->create($orginalUrl)->adaptiveResize(380,285)->save($sliderUrl);
 	}
 }
