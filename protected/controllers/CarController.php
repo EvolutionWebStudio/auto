@@ -101,8 +101,10 @@ class CarController extends Controller
 		if(isset($_POST['Car']))
 		{
 			$model->attributes=$_POST['Car'];
-			if($model->save())
+			if($model->save()) {
+				$this->uploadImages($model);
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('update',array(
