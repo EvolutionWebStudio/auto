@@ -55,7 +55,7 @@ class Mark extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
+			'name' => 'Proizvođač',
 			'link' => 'Link',
 		);
 	}
@@ -84,6 +84,9 @@ class Mark extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'pagination'=>array(
+				'pageSize'=>$this->count()
+			),
 		));
 	}
 
