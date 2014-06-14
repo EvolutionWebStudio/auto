@@ -24,11 +24,28 @@ class MainMenu extends CMenu
 
 		$html.="<ul id='yw2' class='sf-js-enabled'>";
 		$html.="<li>".CHtml::link('Svi automobili', array('car/index'), array('class'=>'strong'))."</li>";
-		$html.="<li>".CHtml::link('Na akciji', array('car/index','stanje'=>'na-akciji'), array('class'=>'strong text-red'))."</li>";
-		$html.="<li>".CHtml::link('U dolasku', array('car/index','stanje'=>'u-dolasku'), array('class'=>'strong'))."</li>";
-		foreach ($menus as $menu) {
-			$html.="<li>".CHtml::link($menu->name, array('car/index','proizvodjac'=>$menu->name))."</li>";
-		}
+		if(isset($_GET['stanje'])):
+			$html.="<li>".CHtml::link('Na akciji', array('car/index','stanje'=>'na-akciji'), array('class'=>($_GET['stanje'] == 'na-akciji')? 'active strong text-red' : 'strong text-red'))."</li>";
+			$html.="<li>".CHtml::link('U dolasku', array('car/index','stanje'=>'u-dolasku'), array('class'=>($_GET['stanje'] == 'u-dolasku')? 'active strong' : 'strong'))."</li>";
+		else:
+			$html.="<li>".CHtml::link('Na akciji', array('car/index','stanje'=>'na-akciji'), array('class'=>'strong text-red'))."</li>";
+			$html.="<li>".CHtml::link('U dolasku', array('car/index','stanje'=>'u-dolasku'), array('class'=>'strong'))."</li>";
+		endif;
+		if(isset($_GET['proizvodjac']))
+			foreach ($menus as $menu) {
+				$html.="<li>".CHtml::link(
+						$menu->name,
+						array('car/index','proizvodjac'=>$menu->name),
+						($_GET['proizvodjac'] == $menu->name)? array('class'=>'active') : array())."</li>";
+
+			}
+		else
+			foreach ($menus as $menu) {
+				$html.="<li>".CHtml::link(
+						$menu->name,
+						array('car/index','proizvodjac'=>$menu->name))."</li>";
+
+			}
 		$html.="</ul>";
 
 

@@ -50,7 +50,10 @@
             <div class="row">
                 <div class="sidebar large-3 columns">
                     <nav class="main-menu">
-                        <?php $this->widget('MainMenu'); ?>
+                        <?php $this->widget('MainMenu',array(
+	                        'activeCssClass' => 'active',
+	                        'activateItems' => true,
+                        )); ?>
                     </nav>
                     <div class="promo-area">
 
