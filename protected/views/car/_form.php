@@ -24,7 +24,7 @@
 		<?php echo $form->labelEx($model,'naslov'); ?>
 		<?php echo $form->textField($model,'naslov',array('size'=>60,'maxlength'=>120)); ?>
 		<?php echo $form->error($model,'naslov'); ?>
-        <span class="field-note">Sažet naslov. Primjer (Volkswagen Golf 4 1.9 TDI)</span>
+        <span class="field-note">Sa�et naslov. Primjer (Volkswagen Golf 4 1.9 TDI)</span>
 	</div>
 
     <div class="row">
@@ -156,7 +156,7 @@
         </div>
 	</div>
 
-	<?php if(!$model->isNewRecord) $this->renderPartial('_images',array('model'=>$model)) ?>
+	<?php if(!$model->isNewRecord) $this->renderPartial('_images',array('model'=>$model, 'images' => $images)) ?>
 
     <div>
 		<?php

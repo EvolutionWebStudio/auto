@@ -115,8 +115,30 @@ class Mark extends CActiveRecord
 		$model = Mark::model()->findByAttributes(array(
 			'id' => $id,
 		));
-		if($model)
+		if($model) {
 			return $model->name;
+		}
+		else
+			return false;
+	}
+
+	public static function getFolderName($id) {
+		$model = Mark::model()->findByAttributes(array(
+			'id' => $id,
+		));
+		if($model) {
+			$name = strtr($model->name,array(
+				'š'=>'s',
+				'Š'=>'S',
+				'Ć'=>'C',
+				'Č'=>'C',
+				'č'=>'c',
+				'ć'=>'c',
+				'ë'=>'e',
+			));
+			return $name;
+		}
+
 		else
 			return false;
 	}

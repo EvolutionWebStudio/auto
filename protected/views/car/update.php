@@ -21,6 +21,6 @@ $this->menu=array(
     </div>
 
     <div class="large-12 columns">
-        <?php $this->renderPartial('_form', array('model'=>$model)); ?>
+        <?php $this->renderPartial('_form', array('model'=>$model, 'images' => $images)); ?>
     </div>
 </div>

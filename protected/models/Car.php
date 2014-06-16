@@ -65,7 +65,7 @@ class Car extends CActiveRecord
 		return array(
 			'mark' => array(self::BELONGS_TO, 'Mark', 'mark_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'images' => array(self::HAS_MANY, 'Image', 'car_id'),
+			'images' => array(self::HAS_MANY, 'Image', 'car_id', 'order'=>'sort ASC'),
 		);
 	}
 
@@ -173,7 +173,7 @@ class Car extends CActiveRecord
      */
     public function getMainImage($size = 'original')
     {
-        $imagesPath = Yii::app()->request->getBaseUrl(true).'/media/'.$this->mark->name.'/'.$this->id.'/';
+        $imagesPath = Yii::app()->request->getBaseUrl(true).'/media/'.Mark::getFolderName($this->mark_id).'/'.$this->id.'/';
         if($size == 'thumbnail')
             $imagesPath .= 'thumbs/';
         else if ($size == 'slider')
@@ -181,7 +181,7 @@ class Car extends CActiveRecord
         else
             $imagesPath .= 'original/';
 
-        return $imagesPath.$this->images[1]->link;
+        return $imagesPath.$this->images[0]->link;
     }
 
     /**

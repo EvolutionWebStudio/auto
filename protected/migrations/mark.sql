@@ -56,9 +56,6 @@ INSERT INTO `mark` (`id`, `name`, `link`) VALUES
 (18, 'GMC', NULL),
 (19, 'Volvo', NULL),
 (20, 'Toyota', NULL),
-(21, 'Opel', NULL),
-(22, 'Škoda', NULL),
-(23, 'Audi', NULL),
 (24, 'Subaru', NULL),
 (25, 'Smart', NULL);
 

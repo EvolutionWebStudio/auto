@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'image':
  * @property integer $id
- * @property integer $order
+ * @property integer $sort
  * @property string $link
  * @property integer $car_id
  *
@@ -31,11 +31,11 @@ class Image extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('car_id', 'required'),
-			array('order, car_id', 'numerical', 'integerOnly'=>true),
+			array('sort, car_id', 'numerical', 'integerOnly'=>true),
 			array('link', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, order, link, car_id', 'safe', 'on'=>'search'),
+			array('id, sort, link, car_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,7 +58,7 @@ class Image extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'order' => 'Order',
+			'sort' => 'Order',
 			'link' => 'Link',
 			'car_id' => 'Car',
 		);
@@ -76,20 +76,27 @@ class Image extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($car_id)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('order',$this->order);
+		$criteria->compare('sort',$this->sort);
 		$criteria->compare('link',$this->link,true);
-		$criteria->compare('car_id',$this->car_id);
+		$criteria->compare('car_id',$car_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
+				'defaultOrder'=>'sort ASC',
+			),
+			'pagination'=>array(
+				'pageSize'=>$this->count()
+			),
 		));
+
 	}
 
 	/**
