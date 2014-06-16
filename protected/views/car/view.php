@@ -15,7 +15,7 @@ $this->menu=array(
 	array('label'=>'Manage Car', 'url'=>array('admin')),
 );
 
-$imagesPath = Yii::app()->baseUrl.'/media/'.$model->mark->name.'/'.$model->id.'/'
+$imagesPath = Yii::app()->baseUrl.'/media/'.Mark::getFolderName($model->mark_id).'/'.$model->id.'/'
 ?>
 
 <div class="page one-car clearfix">
@@ -91,7 +91,7 @@ $imagesPath = Yii::app()->baseUrl.'/media/'.$model->mark->name.'/'.$model->id.'/
 		<?php if(!Yii::app()->user->isGuest): ?>
 			<ul class="button-group admin-buttons">
 				<li><?php echo CHtml::link('Izmjeni', array('car/update','id'=>$model->id),array('class' => 'button small')); ?></li>
-				<li><?php echo CHtml::link('Obriši', array('car/delete','id'=>$model->id),array('class' => 'button small')); ?></li>
+				<li><?php echo CHtml::link('Obriši', array('car/obrisi','id'=>$model->id), array('confirm' => 'Jeste li sigurni?', 'class' => 'button small')); ?></li>
 			</ul>
 		<?php endif; ?>
         <ul class="button-group social-buttons">

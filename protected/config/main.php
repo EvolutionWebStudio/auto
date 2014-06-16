@@ -8,6 +8,8 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Web Application',
+	'defaultController' => 'car',
+
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -40,12 +42,16 @@ return array(
 
 		'urlManager'=>array(
 			'urlFormat'=>'path',
+			'showScriptName'=>false,
 			'rules'=>array(
 				'admin' => 'site/login',
+				'<proizvodjac:[\w\s\w]+>/<id:\d+>' => 'car/view',
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<proizvodjac:[\w\s\w]+>'=>'car/index',
 				'<stanje:[\w-\w]+>'=>'car/index',
+				'' => 'car/index',
+
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 
 			),

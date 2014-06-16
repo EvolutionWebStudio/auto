@@ -32,17 +32,28 @@ class CarController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','obrisi'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
 		);
+	}
+
+	public function actionObrisi($id) {
+
+		$model = $this->loadModel($id);
+		$model->is_active = 0;
+		if($model->update()) {
+			$this->deleteFolder($model->mark_id, $id);
+		}
+
+		$this->redirect(array('index'));
 	}
 
 	/**
@@ -160,6 +171,11 @@ class CarController extends Controller
 			));
 		}
 
+		$dataProvider->sort->defaultOrder = array(
+			'id'=>CSort::SORT_DESC,
+		);
+		$dataProvider->sort->sortVar = 'sort';
+
 
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
@@ -241,14 +257,14 @@ class CarController extends Controller
 	protected function createFoldersForImages($model)
 	{
 		//Rjesiti se nasi slova u imenima proizvodjaca kod kreiranja foldera
-		$markFolderUrl = Yii::getPathOfAlias('webroot').'/media/'.Mark::getName($model->mark_id);
+		$markFolderUrl = Yii::getPathOfAlias('webroot').'/media/'.Mark::getFolderName($model->mark_id);
 		// make the directory to store the pic:
 		if(!is_dir($markFolderUrl))
 		{
 			mkdir($markFolderUrl);
 			chmod($markFolderUrl, 0755);
 		}
-		$imgFolderUrl = Yii::getPathOfAlias('webroot').'/media/'.Mark::getName($model->mark_id).'/'. $model->id;
+		$imgFolderUrl = Yii::getPathOfAlias('webroot').'/media/'.Mark::getFolderName($model->mark_id).'/'. $model->id;
 		if(!is_dir($imgFolderUrl))
 		{
 			mkdir($imgFolderUrl);
@@ -264,7 +280,7 @@ class CarController extends Controller
 			chmod($imgFolderUrl.'/slider', 0755);
 		}
 
-		return Yii::getPathOfAlias('webroot').'/media/'.Mark::getName($model->mark_id).'/'. $model->id.'/original';
+		return Yii::getPathOfAlias('webroot').'/media/'.Mark::getFolderName($model->mark_id).'/'. $model->id.'/original';
 	}
 
 	protected function createThumbsAndSliderImages($orginalUrl)
@@ -281,5 +297,65 @@ class CarController extends Controller
 		//chain functions
 		$thumb->create($orginalUrl)->adaptiveResize(150,120)->save($thumbUrl);
 		$thumb->create($orginalUrl)->adaptiveResize(380,285)->save($sliderUrl);
+	}
+
+	protected function deleteFolder($markID, $folder=0)
+	{
+		if($folder != 0)
+		{
+			$dirname = Yii::getPathOfAlias('webroot').'/media/'.Mark::getFolderName($markID).'/'.$folder;
+			$thumbs = $dirname.'/thumbs';
+			$original = $dirname.'/original';
+			$slider = $dirname.'/slider';
+			if(!file_exists($dirname))
+				return;
+			if(file_exists($thumbs))
+			{
+				$folder_handler = dir($thumbs);
+				while ($file = $folder_handler->read())
+				{
+					if ($file == "." || $file == "..")
+						continue;
+					unlink($thumbs.'/'.$file);
+				}
+				$folder_handler->close();
+				rmdir($thumbs);
+			}
+			if(file_exists($original))
+			{
+				$folder_handler = dir($original);
+				while ($file = $folder_handler->read())
+				{
+					if ($file == "." || $file == "..")
+						continue;
+					unlink($original.'/'.$file);
+				}
+				$folder_handler->close();
+				rmdir($original);
+			}
+			if(file_exists($slider))
+			{
+				$folder_handler = dir($slider);
+				while ($file = $folder_handler->read())
+				{
+					if ($file == "." || $file == "..")
+						continue;
+					unlink($slider.'/'.$file);
+				}
+				$folder_handler->close();
+				rmdir($slider);
+			}
+
+			$folder_handler = dir($dirname);
+			while ($file = $folder_handler->read())
+			{
+				if ($file == "." || $file == "..")
+					continue;
+				unlink($dirname.'/'.$file);
+			}
+			$folder_handler->close();
+			rmdir($dirname);
+		}
+
 	}
 }
