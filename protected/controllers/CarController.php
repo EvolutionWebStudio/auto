@@ -50,6 +50,12 @@ class CarController extends Controller
 		$model = $this->loadModel($id);
 		$model->is_active = 0;
 		if($model->update()) {
+			$images = Image::model()->findAllByAttributes(array(
+						'car_id' => $model->id,
+					));
+			foreach($images as $image) {
+				$image->delete();
+			}
 			$this->deleteFolder($model->mark_id, $id);
 		}
 
@@ -105,6 +111,7 @@ class CarController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$images=new Image('search');
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -120,6 +127,7 @@ class CarController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
+			'images'=>$images,
 		));
 	}
 

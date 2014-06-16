@@ -65,7 +65,7 @@ class Car extends CActiveRecord
 		return array(
 			'mark' => array(self::BELONGS_TO, 'Mark', 'mark_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'images' => array(self::HAS_MANY, 'Image', 'car_id'),
+			'images' => array(self::HAS_MANY, 'Image', 'car_id', 'order'=>'sort ASC'),
 		);
 	}
 

@@ -32,7 +32,7 @@ class ImageController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','imageUp','obrisi'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -128,6 +128,14 @@ class ImageController extends Controller
 		));
 	}
 
+	public function actionObrisi($id)
+	{
+		$model = $this->loadModel($id);
+		$carId = $model->car_id;
+		$model->delete();
+		$this->redirect(array('car/update','id'=>$carId));
+	}
+
 	/**
 	 * Manages all models.
 	 */
@@ -168,6 +176,36 @@ class ImageController extends Controller
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
+		}
+	}
+
+	public function actionImageUp($id)
+	{
+		$image = $this->loadModel($id);
+		$criteria = new CDbCriteria;
+		$criteria->condition = 'car_id = :carId';
+		$criteria->params = array(':carId' => $image->car_id);
+		$criteria->order = 'sort';
+		$images = Image::model()->findAll($criteria);
+		$this->reorder($image,$images);
+	}
+
+	protected function reorder($image,$images)
+	{
+		$pom = null;
+		foreach($images as $i) {
+			if($i->sort == $image->sort -1) {
+				$pom = $i;
+			}
+		}
+		if($pom) {
+			$order = $pom->sort;
+			$pom->sort = $image->sort;
+			$pom->update();
+			$image->sort = $order;
+			$image->update();
+			$this->redirect(array('car/update','id'=>$image->car_id));
+
 		}
 	}
 }

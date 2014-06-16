@@ -106,7 +106,7 @@
 		<?php echo $form->checkBox($model,'na_akciji'); ?>
 		<?php echo $form->error($model,'na_akciji'); ?>
 	</div>
-	<?php if(!$model->isNewRecord) $this->renderPartial('_images',array('model'=>$model)) ?>
+	<?php if(!$model->isNewRecord) $this->renderPartial('_images',array('model'=>$model, 'images'=>$images)) ?>
 	<div>
 		<?php
 		$this->widget('CMultiFileUpload', array(
