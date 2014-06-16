@@ -21,7 +21,7 @@ $this->menu=array(
                 'kilometraza'
             ),
             'template' => '{sorter} {items} {pager}',
-            'emptyText'=>'<span data-alert class="alert-box info">Trenutno nema ni jedan automobil.</span>'
+            'emptyText'=>'<p data-alert class="alert-box secondary">Trenutno nema ni jedan automobil.</p>'
         )); ?>
     </div>
 </div>

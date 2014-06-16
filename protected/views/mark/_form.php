@@ -19,14 +19,22 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="large-5 columns">
+	<div class="">
 		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>120)); ?>
+        <div class="row collapse">
+            <div class="large-7 columns">
+                <?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>120)); ?>
+            </div>
+            <div class="large-5 columns">
+                <?php echo CHtml::submitButton($model->isNewRecord ? 'Upiši proizvođača' : 'Snimi proizvođača', array('class' => 'button primary radius postfix')); ?>
+            </div>
+        </div>
+
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Dodaj' : 'Save'); ?>
+
 	</div>
 
 <?php $this->endWidget(); ?>

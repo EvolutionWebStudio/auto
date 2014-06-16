@@ -19,8 +19,18 @@ $imagesPath = Yii::app()->baseUrl.'/media/'.$model->mark->name.'/'.$model->id.'/
 ?>
 
 <div class="page one-car clearfix">
-    <div class="large-12 columns">
+    <div class="large-12 columns relative">
         <h1 class="car-title"><?php echo $model->naslov; ?></h1>
+
+        <?php if(!Yii::app()->user->isGuest): ?>
+            <div class="admin-buttons">
+                <ul class="button-group">
+                    <li><?php echo CHtml::link('<span class="fa fa-pencil"></span>', array('car/update','id'=>$model->id),array('class' => 'button small', 'title' => 'Izmjeni')); ?></li>
+                    <li><?php echo CHtml::link('<span class="fa fa-trash-o"></span>', array('car/delete','id'=>$model->id),array('class' => 'button small', 'title' => 'Obriši')); ?></li>
+                </ul>
+            </div>
+
+        <?php endif; ?>
     </div>
 
     <div class="large-8 columns">
@@ -64,12 +74,7 @@ $imagesPath = Yii::app()->baseUrl.'/media/'.$model->mark->name.'/'.$model->id.'/
                         <td><?php echo $model->kilometraza . ' km'; ?></td>
                     </tr>
                 <?php endif; ?>
-                <?php if($model->boja): ?>
-                    <tr>
-                        <td>Boja:</td>
-                        <td><?php echo $model->boja; ?></td>
-                    </tr>
-                <?php endif; ?>
+
                 <?php if($model->gorivo): ?>
                     <tr>
                         <td>Gorivo:</td>
@@ -82,18 +87,18 @@ $imagesPath = Yii::app()->baseUrl.'/media/'.$model->mark->name.'/'.$model->id.'/
                         <td><?php echo $model->transmisija; ?></td>
                     </tr>
                 <?php endif; ?>
+                <?php if($model->boja): ?>
+                    <tr>
+                        <td>Boja:</td>
+                        <td><?php echo $model->boja; ?></td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
         </table>
 
         <div class="car-price">
             <?php echo $model->cijena . ' KM'; ?>
         </div>
-		<?php if(!Yii::app()->user->isGuest): ?>
-			<ul class="button-group admin-buttons">
-				<li><?php echo CHtml::link('Izmjeni', array('car/update','id'=>$model->id),array('class' => 'button small')); ?></li>
-				<li><?php echo CHtml::link('Obriši', array('car/delete','id'=>$model->id),array('class' => 'button small')); ?></li>
-			</ul>
-		<?php endif; ?>
         <ul class="button-group social-buttons">
             <li><?php echo CHtml::link('<span class="fa fa-facebook"></span> Share', $model->getFacebookShareUrl(Yii::app()->request->url), array('rel' => 'nofollow', 'target' => '_blank', 'class' => 'button facebook small')); ?></li>
             <li><?php echo CHtml::link('<span class="fa fa-twitter"></span> Tweet', $model->getTwitterShareUrl(Yii::app()->request->url), array('rel' => 'nofollow', 'target' => '_blank', 'class' => 'button twitter small')); ?></li>
@@ -102,9 +107,9 @@ $imagesPath = Yii::app()->baseUrl.'/media/'.$model->mark->name.'/'.$model->id.'/
 </div>
 
 <?php
-    $baseUrl = Yii::app()->baseUrl;
-    $cs = Yii::app()->getClientScript();
-    $cs->registerScriptFile($baseUrl.'/js/vendor/jquery.bxslider/jquery.bxslider.min.js', CClientScript::POS_END);
-    $cs->registerCssFile($baseUrl.'/js/vendor/jquery.bxslider/jquery.bxslider.css');
-    $cs->registerScript("bindBxslider","$('.bxslider').bxSlider({uceCSS:false,adaptiveHeight: true});", CClientScript::POS_END);
+$baseUrl = Yii::app()->baseUrl;
+$cs = Yii::app()->getClientScript();
+$cs->registerScriptFile($baseUrl.'/js/vendor/jquery.bxslider/jquery.bxslider.min.js', CClientScript::POS_END);
+$cs->registerCssFile($baseUrl.'/js/vendor/jquery.bxslider/jquery.bxslider.css');
+$cs->registerScript("bindBxslider","$('.bxslider').bxSlider({uceCSS:false,adaptiveHeight: true});", CClientScript::POS_END);
 ?>

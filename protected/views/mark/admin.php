@@ -17,27 +17,25 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<div class="row">
-	<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<div class="page car-mark clearfix">
+    <div class="large-6 columns">
+        <?php $this->renderPartial('_form', array('model'=>$model)); ?>
+    </div>
+
+    <div class="large-12 columns">
+        <?php $this->widget('zii.widgets.grid.CGridView', array(
+            'id'=>'mark-grid',
+            'dataProvider'=>$model->search(),
+            'enablePagination'=>false,
+            'columns'=>array(
+                'id',
+                'name',
+                array(
+                    'class'=>'CButtonColumn',
+                    'template'=>'{delete}',
+                ),
+            ),
+        )); ?>
+    </div>
+
 </div>
-
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
-
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'mark-grid',
-	'dataProvider'=>$model->search(),
-	'enablePagination'=>false,
-	'columns'=>array(
-		'id',
-		'name',
-		array(
-			'class'=>'CButtonColumn',
-			'template'=>'{delete}',
-		),
-	),
-)); ?>

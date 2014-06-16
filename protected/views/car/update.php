@@ -15,7 +15,12 @@ $this->menu=array(
 	array('label'=>'Manage Car', 'url'=>array('admin')),
 );
 ?>
+<div class="page car-update clearfix">
+    <div class="large-12 columns">
+        <h1 class="page-title">Izmjena automobila</h1>
+    </div>
 
-<h1>Update Car <?php echo $model->id; ?></h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+    <div class="large-12 columns">
+        <?php $this->renderPartial('_form', array('model'=>$model)); ?>
+    </div>
+</div>

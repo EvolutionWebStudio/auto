@@ -66,7 +66,7 @@
             </div>
 
             <footer class="large-12 columns">
-                <div class="copyright">
+                <div class="copyright row">
                     Copyright &copy; <?php echo date('Y'); ?> Auto Rašević.<br/>
                     Website by <?php echo CHtml::link('matrix web team', 'http://www.matchomp.ba', array('target' => '_blank')); ?>
                 </div>
@@ -101,6 +101,8 @@
     <script>
         $(document).foundation();
     </script>
+
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
