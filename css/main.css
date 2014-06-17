@@ -103,6 +103,12 @@ textarea {
     font-size: 1.8em;
     margin-top: 0;
 }
+.page h1 {
+    font-size: 1.8em;
+}
+.page h2 {
+    font-size: 1.4em;
+}
 
 /* HEADER */
 
@@ -401,6 +407,9 @@ fieldset legend {
     font-style: italic;
 
 }
+.form-buttons {
+    margin-top: 1em;
+}
     .form-buttons .button {
         padding: 1em 1.2em;
     }
@@ -428,7 +437,8 @@ footer {
 /* ADMIN NAVIGATION */
 
 .admin-navigation {
-
+    border-bottom: 1px solid #ddd;
+    height: 46px;
 }
 
 

@@ -2,9 +2,13 @@
 /* @var $this PageController */
 /* @var $model Page */
 
-
 ?>
 
-<h1>Izmjeni stranicu O nama</h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<div class="page clearfix">
+    <div class="small-12 columns">
+        <h1 class="page-title">Izmjena stranice "O nama"</h1>
+    </div>
+    <div class="small-12 columns">
+        <?php $this->renderPartial('_form', array('model'=>$model)); ?>
+    </div>
+</div>

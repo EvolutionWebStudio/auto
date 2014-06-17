@@ -17,32 +17,32 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'name'); ?>
 		<?php echo $form->textField($model,'name',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'email'); ?>
 		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>90)); ?>
 		<?php echo $form->error($model,'email'); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'phone'); ?>
 		<?php echo $form->textField($model,'phone',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'phone'); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'links'); ?>
 		<?php echo $form->textArea($model,'links',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'links'); ?>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Snimi'); ?>
+	<div class="form-buttons text-center">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Sačuvaj promjene', array('class' => 'button small')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
