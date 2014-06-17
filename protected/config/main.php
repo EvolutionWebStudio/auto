@@ -45,6 +45,8 @@ return array(
 			'showScriptName'=>false,
 			'rules'=>array(
 				'admin' => 'site/login',
+				'kontakt' => 'site/kontakt',
+				'o-nama' => 'site/o_nama',
 				'<proizvodjac:[\w\s\w]+>/<id:\d+>' => 'car/view',
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',

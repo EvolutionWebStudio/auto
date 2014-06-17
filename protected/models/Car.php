@@ -215,9 +215,10 @@ class Car extends CActiveRecord
 
     public function getShortDescription()
     {
-        if(strlen($this->opis)>250)
-            return substr($this->opis,0, 250).'...';
+	    $opis = strip_tags($this->opis);
+        if(strlen($opis)>250)
+            return substr($opis,0, 250).'...';
         else
-            return $this->opis;
+            return $opis;
     }
 }

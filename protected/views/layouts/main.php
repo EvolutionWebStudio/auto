@@ -40,7 +40,7 @@
                     </div>
                     <div class="info-menu">
 	                    <ul>
-		                    <li><?php echo CHtml::link('O nama',array('site/o_nama')); ?></li>
+		                    <li><?php echo CHtml::link('O nama',array('site/o-nama')); ?></li>
 		                    <li><?php echo CHtml::link('Kontakt',array('site/kontakt')); ?></li>
 	                    </ul>
                     </div>
