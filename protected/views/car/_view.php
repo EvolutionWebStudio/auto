@@ -5,6 +5,12 @@
 
 <div class="row car-list-item">
     <div class="small-12 medium-6 large-3 columns car-image">
+        <?php $this->renderPartial('_promo-label', array('model' => $data)); ?>
+
+        <?php if(!Yii::app()->user->isGuest): ?>
+            <?php $this->renderPartial('_admin-buttons', array('model' => $data)); ?>
+        <?php endif; ?>
+
         <div class="image-wrapper">
             <img src="<?php echo $data->getMainImage('thumbnail'); ?>"/>
         </div>

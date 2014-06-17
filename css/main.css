@@ -65,16 +65,6 @@ video {
 }
 
 /*
- * Remove default fieldset styles.
- */
-
-fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
-}
-
-/*
  * Allow only vertical resizing of textareas.
  */
 
@@ -198,7 +188,7 @@ header {
         border: none;
     }
     .car-list .car-image {
-        padding-right: 0;
+        /*padding-right: 0;*/
     }
         .car-list .car-image img {
             width: 100%;
@@ -225,7 +215,7 @@ header {
         line-height: 1.2em;
     }
     .car-list .car-info {
-        padding-left: 0;
+        /*padding-left: 0;*/
     }
         .car-list .car-info table {
             width: 100%;
@@ -343,19 +333,60 @@ header {
 
 .admin-buttons {
     position: absolute;
+
+}
+.car-list .admin-buttons{
+    right: 4px;
+    top: 4px;
+}
+.one-car .admin-buttons {
     right: 1rem;
     top: 0;
 }
-    .admin-buttons .button {
+    .car-list .admin-buttons .button {
+        padding: .5em;
+        font-size: 1em;
+    }
+    .one-car .admin-buttons .button {
         padding: .5em .7em;
         font-size: 1em;
     }
 
-.nicEdit-main {
-    background: #fff;
+/* UI ELEMENTS */
+
+.promo-label-wrapper {
+    position: absolute;
+    z-index: 333;
 }
+.car-list .promo-label-wrapper {
+    left: 19px;
+    top: 4px;
+}
+.one-car .promo-label-wrapper {
+    left: 20px;
+    top: 5px;
+    font-size: 1.2em;
+}
+    .promo-label {
+        display: inline-block;
+        padding: .5em;
+        margin: 0;
+        color: #fff;
+    }
+        .promo-label.akcija {
+            background: #ED4B4B;
+        }
+        .promo-label.dolazak {
+            background: #3a945b;
+        }
+
 
 /* FORM */
+
+fieldset legend {
+    background: none;
+    font-weight: normal;
+}
 
 .form-note {
     color: #666;
@@ -540,12 +571,27 @@ footer {
     .page {
         margin-left: 0;
     }
+
+
+    .car-list .car-title {
+        margin-top: .5em;
+    }
+    .car-list .car-description {
+        margin-bottom: 1em;
+    }
+    .car-list .admin-buttons {
+        right: 19px;
+    }
+
+
 }
 /* max-width 640px, mobile-only styles, use when QAing mobile issues */
 
 /*Medium screens */
 @media only screen and (min-width: 40.063em) {
-
+    .car-list .car-image {
+        padding-right: 0;
+    }
 }
 /* min-width 641px, medium screens */
 @media only screen and (min-width: 40.063em) and (max-width: 64em) {
@@ -556,11 +602,23 @@ footer {
     .page {
         margin-left: 0;
     }
+
+    .car-list .car-description {
+        margin-bottom: 1em;
+    }
+    .car-list .car-list-item {
+        padding-bottom: 1em;
+        padding-top: 1em;
+    }
 }
 /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
 
 /*Large screens */
-@media only screen and (min-width: 64.063em) { }
+@media only screen and (min-width: 64.063em) {
+    .car-list .car-info {
+        padding-left: 0;
+    }
+}
 /* min-width 1025px, large screens */
 @media only screen and (min-width: 64.063em) and (max-width: 90em) { }
 /* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */

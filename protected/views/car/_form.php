@@ -173,22 +173,31 @@
         </div>
 	</div>
 
-	<?php if(!$model->isNewRecord) $this->renderPartial('_images',array('model'=>$model, 'images' => $images)) ?>
+    <div class="row">
+        <div class="large-12 columns">
+            <fieldset>
+                <legend>Slike automobila</legend>
 
-    <div>
-		<?php
-		$this->widget('CMultiFileUpload', array(
-			'name' => 'images',
-			'accept' => 'jpeg|jpg|gif|png', // useful for verifying files
-			'duplicate' => 'Duplicate file!', // useful, i think
-			'denied' => 'Invalid file type', // useful, i think
-			'htmlOptions' => array( 'multiple' => 'multiple', ),
-		)); ?>
-	</div>
+                <?php if(!$model->isNewRecord) $this->renderPartial('_images',array('model'=>$model, 'images' => $images)) ?>
 
-	<div class="text-center form-buttons">
+                <div>
+                    <?php
+                    $this->widget('CMultiFileUpload', array(
+                        'name' => 'images',
+                        'accept' => 'jpeg|jpg|gif|png', // useful for verifying files
+                        'duplicate' => 'Duplicate file!', // useful, i think
+                        'denied' => 'Invalid file type', // useful, i think
+                        'htmlOptions' => array( 'multiple' => 'multiple', ),
+                    )); ?>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+	<div class="text-center form-buttons large-12 columns">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Kreiraj automobil' : 'Sačuvaj izmjene', array('class' => 'button primary small')); ?>
 	</div>
+
 
 <?php $this->endWidget(); ?>
 
