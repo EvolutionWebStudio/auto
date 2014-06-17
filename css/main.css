@@ -269,7 +269,21 @@ header {
                 /*background: #9A0505;*/
                 background: #D2B214;
             }
-
+.sorter {
+    background: #ddd;
+    padding: .5em 1em;
+}
+    .sorter a {
+        color: #666;
+        font-size: .95em;
+    }
+        .sorter a:hover {
+            color: #333;
+        }
+        .sorter a.asc,
+        .sorter a.desc {
+            color: #111;
+        }
 
 /* ONE CAR */
 
@@ -356,6 +370,9 @@ header {
     font-style: italic;
 
 }
+    .form-buttons .button {
+        padding: 1em 1.2em;
+    }
 
 /* FOOTER */
 

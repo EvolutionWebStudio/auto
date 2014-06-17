@@ -24,7 +24,6 @@
 		<?php echo $form->labelEx($model,'naslov'); ?>
 		<?php echo $form->textField($model,'naslov',array('size'=>60,'maxlength'=>120)); ?>
 		<?php echo $form->error($model,'naslov'); ?>
-        <span class="field-note">Sa�et naslov. Primjer (Volkswagen Golf 4 1.9 TDI)</span>
 	</div>
 
     <div class="row">
@@ -154,8 +153,7 @@
             <?php $this->widget('application.extensions.editMe.widgets.ExtEditMe', array(
 	            'model'=>$model,
 	            'attribute'=>'opis',
-	            'width'=>'600',
-	            'height'=>'250',
+	            'height'=>'150',
 	            'htmlOptions' => array('class'=>'has_editor',),
 	            'toolbar'=>array(
 		            array(
@@ -188,8 +186,8 @@
 		)); ?>
 	</div>
 
-	<div class=" buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Kreiraj' : 'Sačuvaj', array('class' => 'button primary small')); ?>
+	<div class="text-center form-buttons">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Kreiraj automobil' : 'Sačuvaj izmjene', array('class' => 'button primary small')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

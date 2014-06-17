@@ -16,10 +16,12 @@ $this->menu=array(
             'dataProvider'=>$dataProvider,
             'itemView'=>$view,
             'sortableAttributes'=>array(
+                'id',
                 'godiste',
                 'cijena',
-                'kilometraza'
+                'kilometraza',
             ),
+            'sorterHeader' => 'Sortiraj listu po:',
             'template' => '{sorter} {items} {pager}',
             'emptyText'=>'<p data-alert class="alert-box secondary">Trenutno nema ni jedan automobil.</p>'
         )); ?>

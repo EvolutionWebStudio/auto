@@ -75,7 +75,7 @@ class Car extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => 'Datum objave',
 			'naslov' => 'Naslov',
 			'model' => 'Model',
 			'godiste' => 'Godina',
