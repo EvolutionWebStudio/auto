@@ -23,7 +23,7 @@ class MainMenu extends CMenu
 
 
 		$html.="<ul id='yw2' class='sf-js-enabled'>";
-		if(!isset($_GET['stanje']) && !isset($_GET['proizvodjac']) && Yii::app()->controller->id == 'car')
+		if(!isset($_GET['stanje']) && !isset($_GET['proizvodjac']) && Yii::app()->controller->id == 'car' && Yii::app()->controller->action->id == 'index')
 			$html.="<li>".CHtml::link('Svi automobili', array('car/index'), array('class'=>'strong active'))."</li>";
 		else
 			$html.="<li>".CHtml::link('Svi automobili', array('car/index'), array('class'=>'strong'))."</li>";
