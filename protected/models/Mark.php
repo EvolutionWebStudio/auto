@@ -127,7 +127,16 @@ class Mark extends CActiveRecord
 			'id' => $id,
 		));
 		if($model) {
-			return strtolower($model->name);
+			$name = strtr($model->name,array(
+				'š'=>'s',
+				'Š'=>'S',
+				'Ć'=>'C',
+				'Č'=>'C',
+				'č'=>'c',
+				'ć'=>'c',
+				'ë'=>'e',
+			));
+			return strtolower($name);
 		}
 		else
 			return false;

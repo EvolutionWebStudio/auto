@@ -158,8 +158,8 @@ class Car extends CActiveRecord
 	public static function getTransmissionTypes()
 	{
 		$types = array(
-			'Automatska' => 'Automatska',
 			'Manuelna' => 'Manuelna',
+			'Automatska' => 'Automatska',
 			'Poluautomatska' => 'Poluautomatska',
 		);
 		return $types;
@@ -173,7 +173,17 @@ class Car extends CActiveRecord
      */
     public function getMainImage($size = 'original')
     {
-        $imagesPath = Yii::app()->request->getBaseUrl(true).'/media/'.Mark::getFolderName($this->mark_id).'/'.$this->id.'/';
+	    if($this->images)
+	    {
+		    $imagesPath = Yii::app()->request->getBaseUrl(true).'/media/'.Mark::getFolderName($this->mark_id).'/'.$this->id.'/';
+		    $imageName = $this->images[0]->link;
+	    }
+	    else
+	    {
+		    $imagesPath = Yii::app()->request->getBaseUrl(true).'/media/default/';
+		    $imageName = 'auto-rasevic-pale-default-image.jpg';
+	    }
+
         if($size == 'thumbnail')
             $imagesPath .= 'thumbs/';
         else if ($size == 'slider')
@@ -181,7 +191,8 @@ class Car extends CActiveRecord
         else
             $imagesPath .= 'original/';
 
-        return $imagesPath.$this->images[0]->link;
+        return $imagesPath.$imageName;
+
     }
 
     /**

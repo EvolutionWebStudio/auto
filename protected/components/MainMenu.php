@@ -17,7 +17,7 @@ class MainMenu extends CMenu
 		$criteria->join = 'RIGHT JOIN Car on t.id = car.mark_id';
 		$criteria->condition = 'Car.is_active = 1';
 		$criteria->distinct=true;
-		$criteria->select = 'name';
+		$criteria->select = 'name, t.id';
 		$menus = Mark::model()->findAll($criteria);
 		$html = "";
 
@@ -38,7 +38,7 @@ class MainMenu extends CMenu
 			foreach ($menus as $menu) {
 				$html.="<li>".CHtml::link(
 						$menu->name,
-						array('car/index','proizvodjac'=>strtolower($menu->name)),
+						array('car/index','proizvodjac'=>Mark::getLinkName($menu->id)),
 						($_GET['proizvodjac'] == strtolower($menu->name))? array('class'=>'active') : array())."</li>";
 
 			}

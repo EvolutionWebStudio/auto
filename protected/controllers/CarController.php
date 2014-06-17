@@ -157,6 +157,9 @@ class CarController extends Controller
 					'criteria'=>array(
 						'condition'=>'is_active=1 AND '.$stanje.'=1',
 					),
+					'pagination'=>array(
+						'pageSize'=>50
+					),
 				));
 			else
 				throw new CHttpException('404','Stranica ne postoji');
@@ -169,12 +172,18 @@ class CarController extends Controller
 				'criteria'=>array(
 					'condition'=>'is_active=1 AND mark_id ='.$proizvodjac,
 				),
+				'pagination'=>array(
+					'pageSize'=>50
+				),
 			));
 		}
 		else {
 			$dataProvider=new CActiveDataProvider('Car',array(
 				'criteria'=>array(
 					'condition'=>'is_active=1',
+				),
+				'pagination'=>array(
+					'pageSize'=>50
 				),
 			));
 		}
@@ -250,7 +259,7 @@ class CarController extends Controller
 					$img_add = new Image();
 					$img_add->link = $newImageName; //it might be $img_add->name for you, filename is just what I chose to call it in my model
 					$img_add->car_id = $model->id; // this links your picture model to the main model (like your user, or profile model)
-					$img_add->order = $order++;
+					$img_add->sort = $order++;
 					$img_add->save(); // DONE
 
 					$this->createThumbsAndSliderImages($imgFolderUrl.'/'.$newImageName);
