@@ -38,15 +38,15 @@ class MainMenu extends CMenu
 			foreach ($menus as $menu) {
 				$html.="<li>".CHtml::link(
 						$menu->name,
-						array('car/index','proizvodjac'=>$menu->name),
-						($_GET['proizvodjac'] == $menu->name)? array('class'=>'active') : array())."</li>";
+						array('car/index','proizvodjac'=>strtolower($menu->name)),
+						($_GET['proizvodjac'] == strtolower($menu->name))? array('class'=>'active') : array())."</li>";
 
 			}
 		else
 			foreach ($menus as $menu) {
 				$html.="<li>".CHtml::link(
 						$menu->name,
-						array('car/index','proizvodjac'=>$menu->name))."</li>";
+						array('car/index','proizvodjac'=>strtolower($menu->name)))."</li>";
 
 			}
 		$html.="</ul>";

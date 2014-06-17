@@ -74,7 +74,7 @@
         </div>
     </div>
 
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.js"></script>
+
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/foundation.min.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/plugins.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script>

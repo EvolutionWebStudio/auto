@@ -122,6 +122,17 @@ class Mark extends CActiveRecord
 			return false;
 	}
 
+	public static function getLinkName($id) {
+		$model = Mark::model()->findByAttributes(array(
+			'id' => $id,
+		));
+		if($model) {
+			return strtolower($model->name);
+		}
+		else
+			return false;
+	}
+
 	public static function getFolderName($id) {
 		$model = Mark::model()->findByAttributes(array(
 			'id' => $id,

@@ -151,7 +151,26 @@
 	<div class="row">
         <div class="large-12 columns">
             <?php echo $form->labelEx($model,'opis'); ?>
-            <?php echo $form->textArea($model,'opis',array('class' => 'has-editor')); ?>
+            <?php $this->widget('application.extensions.editMe.widgets.ExtEditMe', array(
+	            'model'=>$model,
+	            'attribute'=>'opis',
+	            'width'=>'600',
+	            'height'=>'250',
+	            'htmlOptions' => array('class'=>'has_editor',),
+	            'toolbar'=>array(
+		            array(
+			            'Bold', 'Italic', 'Underline', 'Subscript', 'Superscript', '-', 'RemoveFormat',
+		            ),
+		            array(
+			            'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-',
+			            '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight',
+		            ),
+		            array(
+			            'Cut', 'Copy', 'Paste', 'PasteText', '-', 'Undo', 'Redo',
+		            ),
+	            )
+
+            )); ?>
             <?php echo $form->error($model,'opis'); ?>
         </div>
 	</div>

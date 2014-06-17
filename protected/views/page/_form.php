@@ -20,7 +20,25 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'content'); ?>
-		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50)); ?>
+		<?php $this->widget('application.extensions.editMe.widgets.ExtEditMe', array(
+			'model'=>$model,
+			'attribute'=>'content',
+			'width'=>'600',
+			'height'=>'250',
+			'toolbar'=>array(
+				array(
+					'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat',
+				),
+				array(
+					'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote',
+					'-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
+				),
+				array(
+					'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo',
+				),
+			)
+
+		)); ?>
 		<?php echo $form->error($model,'content'); ?>
 	</div>
 
