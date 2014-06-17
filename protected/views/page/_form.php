@@ -18,12 +18,10 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'content'); ?>
+	<div class="">
 		<?php $this->widget('application.extensions.editMe.widgets.ExtEditMe', array(
 			'model'=>$model,
 			'attribute'=>'content',
-			'width'=>'600',
 			'height'=>'250',
 			'toolbar'=>array(
 				array(
@@ -42,8 +40,8 @@
 		<?php echo $form->error($model,'content'); ?>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Snimi'); ?>
+	<div class="form-buttons text-center">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Snimi stranicu' : 'Sačuvaj promjene', array('class' => 'button small')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

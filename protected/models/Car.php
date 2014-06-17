@@ -75,7 +75,7 @@ class Car extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => 'Datum objave',
 			'naslov' => 'Naslov',
 			'model' => 'Model',
 			'godiste' => 'Godina',
@@ -185,7 +185,7 @@ class Car extends CActiveRecord
 	    }
 
         if($size == 'thumbnail')
-            $imagesPath .= 'thumbs/';
+            $imagesPath .= 'slider/';
         else if ($size == 'slider')
             $imagesPath .= 'slider/';
         else

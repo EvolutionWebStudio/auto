@@ -23,17 +23,24 @@ $imagesPath = Yii::app()->baseUrl.'/media/'.Mark::getFolderName($model->mark_id)
         <h1 class="car-title"><?php echo $model->naslov; ?></h1>
 
         <?php if(!Yii::app()->user->isGuest): ?>
-            <div class="admin-buttons">
-                <ul class="button-group">
-                    <li><?php echo CHtml::link('<span class="fa fa-pencil"></span>', array('car/update','id'=>$model->id),array('class' => 'button small', 'title' => 'Izmjeni')); ?></li>
-                    <li><?php echo CHtml::link('<span class="fa fa-trash-o"></span>', array('car/obrisi','id'=>$model->id),array('class' => 'button small', 'title' => 'Obriši', 'confirm' => 'Jeste li sigurni da želite obrisati ovaj automobil iz baze?',)); ?></li>
-                </ul>
-            </div>
-
+            <?php $this->renderPartial('_admin-buttons', array('model' => $model)); ?>
         <?php endif; ?>
     </div>
 
-    <div class="large-8 columns">
+    <div class="large-8 columns relative">
+        <div class="promo-label-wrapper">
+            <?php if($model->na_akciji): ?>
+                <div class="promo-label akcija" title="Na akciji">
+                    <span class="fa fa-bullhorn"></span>
+                </div>
+            <?php endif; ?>
+            <?php if($model->u_dolasku): ?>
+                <div class="promo-label dolazak" title="U dolasku">
+                    <span class="fa fa-truck"></span>
+                </div>
+            <?php endif; ?>
+        </div>
+
         <ul class="car-slider bxslider">
             <?php
             foreach ($model->images as $image)
