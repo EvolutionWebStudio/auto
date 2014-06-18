@@ -67,11 +67,12 @@ $this->pageTitle= 'Kontakt | '. Yii::app()->name;
                     <div class="">
                         <?php echo $form->labelEx($model,'verifyCode'); ?>
                         <div>
-                            <?php $this->widget('CCaptcha'); ?>
+                            <?php $this->widget('CCaptcha', array(
+	                            'buttonLabel' => 'Traži novi kod',
+                            )); ?>
                             <?php echo $form->textField($model,'verifyCode'); ?>
                         </div>
-                        <div class="hint">Please enter the letters as they are shown in the image above.
-                            <br/>Letters are not case-sensitive.</div>
+                        <div class="hint">Molimo Vas da unesete slova sa slike iznad. </div>
                         <?php echo $form->error($model,'verifyCode'); ?>
                     </div>
                 <?php endif; ?>
