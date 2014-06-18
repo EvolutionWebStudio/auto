@@ -40,7 +40,7 @@
                     </div>
                     <div class="info-menu">
 	                    <ul>
-		                    <li><?php echo CHtml::link('O nama',array('site/o-nama')); ?></li>
+		                    <li><?php echo CHtml::link('O nama',array('site/o_nama')); ?></li>
 		                    <li><?php echo CHtml::link('Kontakt',array('site/kontakt')); ?></li>
 	                    </ul>
                     </div>
@@ -75,7 +75,7 @@
     </div>
 
 
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.js"></script>
+	<?php Yii::app()->clientScript->registerCoreScript('jquery'); ?>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/foundation.min.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/plugins.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script>

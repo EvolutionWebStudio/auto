@@ -29,10 +29,10 @@ class MainMenu extends CMenu
 			$html.="<li>".CHtml::link('Svi automobili', array('car/index'), array('class'=>'strong'))."</li>";
 		if(isset($_GET['stanje'])):
 			$html.="<li>".CHtml::link('Na akciji', array('car/index','stanje'=>'na-akciji'), array('class'=>($_GET['stanje'] == 'na-akciji')? 'active strong text-red' : 'strong text-red'))."</li>";
-			$html.="<li>".CHtml::link('U dolasku', array('car/index','stanje'=>'u-dolasku'), array('class'=>($_GET['stanje'] == 'u-dolasku')? 'active strong' : 'strong'))."</li>";
+			if(Car::model()->hasUDolasku()): $html.="<li>".CHtml::link('U dolasku', array('car/index','stanje'=>'u-dolasku'), array('class'=>($_GET['stanje'] == 'u-dolasku')? 'active strong' : 'strong'))."</li>"; endif;
 		else:
 			$html.="<li>".CHtml::link('Na akciji', array('car/index','stanje'=>'na-akciji'), array('class'=>'strong text-red'))."</li>";
-			$html.="<li>".CHtml::link('U dolasku', array('car/index','stanje'=>'u-dolasku'), array('class'=>'strong'))."</li>";
+			if(Car::model()->hasUDolasku())$html.="<li>".CHtml::link('U dolasku', array('car/index','stanje'=>'u-dolasku'), array('class'=>'strong'))."</li>";
 		endif;
 		if(isset($_GET['proizvodjac']))
 			foreach ($menus as $menu) {
