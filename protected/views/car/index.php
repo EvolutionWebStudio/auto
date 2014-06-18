@@ -4,10 +4,7 @@
 
 $view = '_view';
 
-$this->menu=array(
-	array('label'=>'Create Car', 'url'=>array('create')),
-	array('label'=>'Manage Car', 'url'=>array('admin')),
-);
+$this->pageTitle = Yii::app()->name;
 ?>
 
 <div class="page car-list clearfix">

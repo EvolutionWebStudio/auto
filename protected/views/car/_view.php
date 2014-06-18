@@ -22,7 +22,7 @@ Yii::app()->clientScript->registerScript('popup', "
         <?php endif; ?>
 
         <div class="image-wrapper">
-            <a href="#" class="show-popup">
+            <a href="#" class="show-popup" data-id="<?php echo $data->id; ?>">
                 <div class="popup-hint"><span class="fa fa-search"></span></div>
                 <img src="<?php echo $data->getMainImage('thumbnail'); ?>"/>
             </a>

@@ -2,14 +2,16 @@
 /* @var $this SiteController */
 /* @var $error array */
 
-$this->pageTitle=Yii::app()->name . ' - Error';
-$this->breadcrumbs=array(
-	'Error',
-);
+$this->pageTitle= 'Greška | ' . Yii::app()->name;
+
 ?>
 
-<h2>Error <?php echo $code; ?></h2>
+<div class="page clearfix error-page">
+    <div class="small-12 columns">
+        <h1 class="page-title">Error <?php echo $code; ?></h1>
+    </div>
 
-<div class="error">
-<?php echo CHtml::encode($message); ?>
+    <div class="error small-12 columns">
+    <?php echo CHtml::encode($message); ?>
+    </div>
 </div>
