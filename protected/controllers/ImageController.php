@@ -133,6 +133,8 @@ class ImageController extends Controller
 		$model = $this->loadModel($id);
 		$carId = $model->car_id;
 		$model->delete();
+		$car = Car::model()->findByPk($carId);
+		$this->deleteImage($car->mark_id, $carId, $model->link);
 		$this->redirect(array('car/update','id'=>$carId));
 	}
 
@@ -207,5 +209,16 @@ class ImageController extends Controller
 			$this->redirect(array('car/update','id'=>$image->car_id));
 
 		}
+	}
+
+	private function deleteImage($markID, $folder, $file)
+	{
+		$dirname = Yii::getPathOfAlias('webroot').'/media/'.Mark::getFolderName($markID).'/'.$folder;
+		$thumbs = $dirname.'/thumbs';
+		$original = $dirname.'/original';
+		$slider = $dirname.'/slider';
+		unlink($thumbs.'/'.$file);
+		unlink($original.'/'.$file);
+		unlink($slider.'/'.$file);
 	}
 }
