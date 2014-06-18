@@ -193,6 +193,14 @@ class CarController extends Controller
 			));
 		}
 
+        if(isset($_GET['vtype']))
+        {
+            if($_GET['vtype'] == 'list' || $_GET['vtype'] == 'grid')
+            {
+                Yii::app()->session['viewType'] = $_GET['vtype'];
+            }
+        }
+
 		$dataProvider->sort->defaultOrder = array(
 			'id'=>CSort::SORT_DESC,
 		);
@@ -200,7 +208,8 @@ class CarController extends Controller
 
 
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'dataProvider'=> $dataProvider,
+            'carViewType' => Yii::app()->session['viewType']
 		));
 
 	}
