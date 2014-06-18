@@ -209,7 +209,7 @@ class CarController extends Controller
 
 		$this->render('index',array(
 			'dataProvider'=> $dataProvider,
-            'carViewType' => Yii::app()->session['viewType']
+            'carViewType' => ((Yii::app()->session['viewType'])?Yii::app()->session['viewType'] : 'list')
 		));
 
 	}
