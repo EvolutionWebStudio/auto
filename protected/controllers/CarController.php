@@ -385,7 +385,6 @@ class CarController extends Controller
     public function actionImages($id)
     {
         $model=$this->loadModel($id);
-        echo 'nesto';
-        return $model->getAllImages();
+        echo $model->getAllImages();
     }
 }
