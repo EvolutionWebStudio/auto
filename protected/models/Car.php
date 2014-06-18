@@ -238,4 +238,14 @@ class Car extends CActiveRecord
         }
         return false;
     }
+
+
+	public static function hasUDolasku() {
+		$uDolasku = Car::model()->findAllByAttributes(array(
+			'u_dolasku' => 1,
+		));
+		if(!$uDolasku)
+			return false;
+		return true;
+	}
 }

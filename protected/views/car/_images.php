@@ -5,15 +5,8 @@
  * Date: 6/14/14
  * Time: 7:52 PM
  */
-$imageUrl = Yii::app()->getBaseUrl(true).'/media/'.Mark::getName($model->mark_id).'/'. $model->id.'/thumbs/';
-function getImageUrl($model, $link) {
-	return Yii::app()->getBaseUrl(true).'/media/'.Mark::getName($model->mark_id).'/'. $model->id.'/thumbs/'.$link;
-}
-//foreach($model->images as $image):
-//?>
-<!--<img src='--><?php //echo $imageUrl.'/'.$image->link; ?><!--' />-->
-<?php
-//endforeach;
+$imageUrl = Yii::app()->getBaseUrl(true).'/media/'.Mark::getLinkName($model->mark_id).'/'. $model->id.'/thumbs/';
+
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'-grid',
 	'dataProvider'=>$images->search($model->id),
