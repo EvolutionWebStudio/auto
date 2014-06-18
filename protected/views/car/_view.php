@@ -1,6 +1,16 @@
 <?php
 /* @var $this CarController */
 /* @var $data Car */
+
+Yii::app()->clientScript->registerScript('popup', "
+    $('.show-popup').magnificPopup({
+        items: ". $data->getAllImages().",
+        gallery: {
+            enabled: true
+        },
+        type: 'image'
+    });
+");
 ?>
 
 <div class="row car-list-item">
@@ -12,7 +22,10 @@
         <?php endif; ?>
 
         <div class="image-wrapper">
-            <img src="<?php echo $data->getMainImage('thumbnail'); ?>"/>
+            <a href="#" class="show-popup">
+                <div class="popup-hint"><span class="fa fa-search"></span></div>
+                <img src="<?php echo $data->getMainImage('thumbnail'); ?>"/>
+            </a>
         </div>
     </div>
 

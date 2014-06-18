@@ -28,4 +28,10 @@ $this->menu=array(
     </div>
 </div>
 
-
+<?php
+$baseUrl = Yii::app()->baseUrl;
+$cs = Yii::app()->getClientScript();
+$cs->registerScriptFile($baseUrl.'/js/vendor/magnific-popup/jquery.magnific-popup.min.js', CClientScript::POS_END);
+$cs->registerCssFile($baseUrl.'/js/vendor/magnific-popup/magnific-popup.css');
+$cs->registerScriptFile($baseUrl.'/js/popup.js', CClientScript::POS_END);
+?>

@@ -180,7 +180,7 @@ class Car extends CActiveRecord
 	    }
 	    else
 	    {
-		    $imagesPath = Yii::app()->request->getBaseUrl(true).'/media/default/';
+		    $imagesPath = Yii::app()->request->getBaseUrl(true).'/media/default/original/';
 		    $imageName = 'auto-rasevic-pale-default-image.jpg';
 	    }
 
@@ -216,9 +216,26 @@ class Car extends CActiveRecord
     public function getShortDescription()
     {
 	    $opis = strip_tags($this->opis);
-        if(strlen($opis)>250)
-            return substr($opis,0, 250).'...';
+        if(strlen($opis)>220)
+            return substr($opis,0, 220).'...';
         else
             return $opis;
+    }
+
+    /**
+     * Returns JASON with all images in original size
+     */
+    public function getAllImages()
+    {
+        if($this->images) {
+            $images = array();
+            $imagesPath = Yii::app()->request->getBaseUrl(true).'/media/'.Mark::getFolderName($this->mark_id).'/'.$this->id.'/original/';
+            foreach ($this->images as $image)
+            {
+                array_push($images, array('src' => $imagesPath.$image->link));
+            }
+            return json_encode($images);
+        }
+        return false;
     }
 }

@@ -15,7 +15,8 @@ $this->menu=array(
 	array('label'=>'Manage Car', 'url'=>array('admin')),
 );
 
-$imagesPath = Yii::app()->baseUrl.'/media/'.Mark::getFolderName($model->mark_id).'/'.$model->id.'/'
+$imagesPath = Yii::app()->baseUrl.'/media/'.Mark::getFolderName($model->mark_id).'/'.$model->id;
+echo $imagesPath;
 ?>
 
 <div class="page one-car clearfix">
@@ -43,9 +44,16 @@ $imagesPath = Yii::app()->baseUrl.'/media/'.Mark::getFolderName($model->mark_id)
 
         <ul class="car-slider bxslider">
             <?php
-            foreach ($model->images as $image)
+            if($model->images)
             {
-                echo '<li><img src="'.$imagesPath.'original/'.$image->link.'"/></li>';
+                foreach ($model->images as $image)
+                {
+                    echo '<li><img src="'.$imagesPath.'/original/'.$image->link.'"/></li>';
+                }
+            }
+            else
+            {
+                echo '<li><img src="'.Yii::app()->baseUrl.'/media/'.'default/original/auto-rasevic-pale-default-image.jpg"/></li>';
             }
             ?>
         </ul>
