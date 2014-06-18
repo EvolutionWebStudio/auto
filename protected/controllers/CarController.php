@@ -330,6 +330,7 @@ class CarController extends Controller
 			$thumbs = $dirname.'/thumbs';
 			$original = $dirname.'/original';
 			$slider = $dirname.'/slider';
+			print_r($thumbs);
 			if(!file_exists($dirname))
 				return;
 			if(file_exists($thumbs))
