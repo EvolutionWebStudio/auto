@@ -3,13 +3,26 @@
 /* @var $data Car */
 
 Yii::app()->clientScript->registerScript('popup', "
-    $('.show-popup').magnificPopup({
-        items: ". $data->getAllImages().",
-        gallery: {
-            enabled: true
-        },
-        type: 'image'
-    });
+    $('.show-popup').bind('click', function(e){
+        e.preventDefault();
+        url = '". CController::createUrl('car/images') . "/' + $(this).attr('data-id');
+        allImages = '';
+        parent = this;
+        $.ajax({
+            dataType: 'json',
+            url: url,
+            success: function(images){
+                $.magnificPopup.open({
+                    items: images,
+                    gallery: {
+                        enabled: true
+                    },
+                    type: 'image'
+                });
+            }
+        });
+
+     });
 ");
 ?>
 
