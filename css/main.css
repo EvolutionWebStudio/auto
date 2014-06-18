@@ -428,9 +428,14 @@ header {
     .car-list .show-popup:hover .popup-hint {
         display: block;
     }
-.mfp-wrap button:hover {
-    background: none;
+.mfp-wrap button {
+    transition: none;
 }
+    .mfp-wrap button:hover,
+    .mfp-wrap button:focus,
+    .mfp-wrap button:active {
+        background: none;
+    }
 
 /* FORM */
 

@@ -28,7 +28,7 @@ class CarController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view', 'images'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -153,15 +153,19 @@ class CarController extends Controller
 		if(isset($_GET['stanje'])) {
 			$stanje = str_replace('-','_',$_GET['stanje']);
 			if($stanje === 'u_dolasku' || $stanje === 'na_akciji')
-				$dataProvider=new CActiveDataProvider('Car',array(
-					'criteria'=>array(
-						'condition'=>'is_active=1 AND '.$stanje.'=1',
-					),
-					'pagination'=>array(
-						'pageSize'=>50
-					),
-				));
-			else
+            {
+                $dataProvider=new CActiveDataProvider('Car',array(
+                    'criteria'=>array(
+                        'condition'=>'is_active=1 AND '.$stanje.'=1',
+                    ),
+                    'pagination'=>array(
+                        'pageSize'=>50
+                    ),
+                ));
+
+                $this->pageTitle = 'Automobili' . (($stanje == 'u_dolasku') ? ' u dolasku' : ' na akciji') . ' | ' . Yii::app()->name;
+            }
+            else
 				throw new CHttpException('404','Stranica ne postoji');
 		}
 		elseif(isset($_GET['proizvodjac'])) {
@@ -176,6 +180,7 @@ class CarController extends Controller
 					'pageSize'=>50
 				),
 			));
+            $this->pageTitle = Mark::getName($proizvodjac) . ' | ' . Yii::app()->name;
 		}
 		else {
 			$dataProvider=new CActiveDataProvider('Car',array(
@@ -197,6 +202,7 @@ class CarController extends Controller
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
+
 	}
 
 	/**
@@ -375,4 +381,11 @@ class CarController extends Controller
 		}
 
 	}
+
+    public function actionImages($id)
+    {
+        $model=$this->loadModel($id);
+        echo 'nesto';
+        return $model->getAllImages();
+    }
 }
