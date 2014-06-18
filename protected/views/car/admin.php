@@ -24,6 +24,8 @@ $('.search-form form').submit(function(){
 	return false;
 });
 ");
+
+
 ?>
 
 <h1>Manage Cars</h1>

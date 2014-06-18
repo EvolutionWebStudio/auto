@@ -190,6 +190,7 @@ class ImageController extends Controller
 		$criteria->order = 'sort';
 		$images = Image::model()->findAll($criteria);
 		$this->reorder($image,$images);
+		$this->redirect(array('car/update','id'=>$image->car_id));
 	}
 
 	protected function reorder($image,$images)
@@ -206,8 +207,6 @@ class ImageController extends Controller
 			$pom->update();
 			$image->sort = $order;
 			$image->update();
-			$this->redirect(array('car/update','id'=>$image->car_id));
-
 		}
 	}
 
