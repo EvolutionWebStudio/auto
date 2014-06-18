@@ -63,20 +63,6 @@ $this->pageTitle= 'Kontakt | '. Yii::app()->name;
                     <?php echo $form->error($model,'body'); ?>
                 </div>
 
-                <?php if(CCaptcha::checkRequirements()): ?>
-                    <div class="">
-                        <?php echo $form->labelEx($model,'verifyCode'); ?>
-                        <div>
-                            <?php $this->widget('CCaptcha', array(
-	                            'buttonLabel' => 'Traži novi kod',
-                            )); ?>
-                            <?php echo $form->textField($model,'verifyCode'); ?>
-                        </div>
-                        <div class="hint">Molimo Vas da unesete slova sa slike iznad. </div>
-                        <?php echo $form->error($model,'verifyCode'); ?>
-                    </div>
-                <?php endif; ?>
-
                 <div class="form-buttons text-center">
                     <?php echo CHtml::submitButton('Pošalji', array('class' => 'button small')); ?>
                 </div>
