@@ -206,12 +206,10 @@ class CarController extends Controller
 		);
 		$dataProvider->sort->sortVar = 'sort';
 
-
 		$this->render('index',array(
 			'dataProvider'=> $dataProvider,
             'carViewType' => ((Yii::app()->session['viewType'])?Yii::app()->session['viewType'] : 'list')
 		));
-
 	}
 
 	/**
