@@ -56,7 +56,7 @@
                         )); ?>
                     </nav>
                     <div class="promo-area">
-
+                        <?php $this->renderPartial('//_common/_banners'); ?>
                     </div>
                 </div>
 

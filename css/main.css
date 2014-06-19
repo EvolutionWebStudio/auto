@@ -499,6 +499,19 @@ fieldset legend {
         padding: 1em 1.2em;
     }
 
+/* BANNERS */
+
+.promo-area {
+    display: none;
+    margin-top: 1em;
+}
+.banner {
+    margin-bottom: 1px;
+}
+    .banner img {
+        width: 100%;
+    }
+
 /* FOOTER */
 
 footer {
@@ -712,6 +725,10 @@ footer {
 @media only screen and (min-width: 64.063em) {
     .car-list .car-info {
         padding-left: 0;
+    }
+
+    .promo-area {
+        display: block;
     }
 }
 /* min-width 1025px, large screens */
