@@ -103,8 +103,11 @@ $imagesPath = Yii::app()->baseUrl.'/media/'.Mark::getFolderName($model->mark_id)
             <?php echo $model->cijena . ' KM'; ?>
         </div>
         <ul class="button-group social-buttons">
-            <li><?php echo CHtml::link('<span class="fa fa-facebook"></span> Share', $model->getFacebookShareUrl(Yii::app()->request->url), array('rel' => 'nofollow', 'target' => '_blank', 'class' => 'button facebook small')); ?></li>
-            <li><?php echo CHtml::link('<span class="fa fa-twitter"></span> Tweet', $model->getTwitterShareUrl(Yii::app()->request->url), array('rel' => 'nofollow', 'target' => '_blank', 'class' => 'button twitter small')); ?></li>
+            <li>
+<!--                <a href="--><?php //echo urldecode($model->getFacebookShareUrl(Yii::app()->request->url)); ?><!--" class="button facebook small social-share" target="_blank" rel="nofollow"><span class="fa fa-facebook"></span> Share</a>-->
+
+                <?php echo CHtml::link('<span class="fa fa-facebook"></span> Share', $model->getFacebookShareUrl(Yii::app()->request->url), array('rel' => 'nofollow', 'target' => '_blank', 'class' => 'button facebook small social-share')); ?></li>
+            <li><?php echo CHtml::link('<span class="fa fa-twitter"></span> Tweet', $model->getTwitterShareUrl(Yii::app()->request->url), array('rel' => 'nofollow', 'target' => '_blank', 'class' => 'button twitter small social-share')); ?></li>
         </ul>
     </div>
 </div>

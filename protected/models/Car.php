@@ -180,7 +180,7 @@ class Car extends CActiveRecord
 	    }
 	    else
 	    {
-		    $imagesPath = Yii::app()->request->getBaseUrl(true).'/media/default/original/';
+		    $imagesPath = Yii::app()->request->getBaseUrl(true).'/media/default/';
 		    $imageName = 'auto-rasevic-pale-default-image.jpg';
 	    }
 
@@ -200,8 +200,14 @@ class Car extends CActiveRecord
      */
     public function getFacebookShareUrl($carUrl)
     {
-        //TODO napraviti link da radi
-        return 'https://www.facebook.com/sharer/sharer.php?s=100&p[title]=' . $this->naslov . '&p[summary]=' . $this->opis . '&p[url]=' . $carUrl . '&&p[images][0]='.$this->getMainImage('thumbnail');
+        $url = Yii::app()->request->getBaseUrl(true).$carUrl;
+        $title = $this->naslov;
+        $description = strip_tags($this->opis);
+        $image = $this->getMainImage('slider');
+
+        $link = 'http://www.facebook.com/sharer.php?s=100&p[url]='.$url.'&p[images][0]='.$image.'&p[title]='.$title.'&p[summary]='.$description;
+//        return 'https://www.facebook.com/sharer/sharer.php?s=100&p[title]="' . $this->naslov . '"&p[summary]="' . strip_tags($this->opis) . '"&p[url]=' . Yii::app()->request->getBaseUrl(true).$carUrl . '&p[images][0]='.$this->getMainImage('slider');
+        return $link;
     }
 
     /**
@@ -209,8 +215,13 @@ class Car extends CActiveRecord
      */
     public function getTwitterShareUrl($carUrl)
     {
-        //TODO ne radi url
-        return 'http://twitter.com/share?url=' . $carUrl . '&text=' . $this->naslov . '&count=horiztonal';
+        $url = Yii::app()->request->getBaseUrl(true).$carUrl;
+        $text = $this->naslov;
+        $via = '';
+        $hashtags = '';
+        $link = 'https://twitter.com/share?url='.$url.'&text='.$text.'&via='.$via.'&hashtags='.$hashtags;
+//        return 'http://twitter.com/share?url=' . $carUrl . '&text=' . $this->naslov . '&count=horiztonal';
+        return $link;
     }
 
     public function getShortDescription()
