@@ -33,7 +33,11 @@
     <div class="row">
         <div class="main-wrapper clearfix">
             <header class="large-12 columns">
-                <div class="logo large-6 medium-6 columns"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/zuti-logo-auto-rasevic.png"/></div>
+                <div class="logo large-6 medium-6 columns">
+                    <a href="<?php echo Yii::app()->request->getBaseUrl(true); ?>">
+                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/zuti-logo-auto-rasevic.png"/>
+                    </a>
+                </div>
                 <div class="large-6 medium-6 columns">
                     <div class="car-logos show-for-medium-up">
                         <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/auto-rasevic-header-car-logos.png"/>
