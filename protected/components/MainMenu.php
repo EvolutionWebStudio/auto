@@ -34,7 +34,7 @@ class MainMenu extends CMenu
 			$html.="<li>".CHtml::link('Na akciji', array('car/index','stanje'=>'na-akciji'), array('class'=>'strong text-red'))."</li>";
 			if(Car::model()->hasUDolasku())$html.="<li>".CHtml::link('U dolasku', array('car/index','stanje'=>'u-dolasku'), array('class'=>'strong'))."</li>";
 		endif;
-		$html.="<li>".CHtml::link('Prikaži meni', '#', array('class'=>'toggle-mobile-menu'))."</li>";
+		$html.='<li class="toggle-mobile-menu">'.CHtml::link('<span class="fa fa-chevron-down"></span> Marke vozila', '#').'</li>';
 		$html.="</ul>";
 		$html.="<ul class='mobile-menu'>";
 		if(isset($_GET['proizvodjac']))

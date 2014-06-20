@@ -219,8 +219,7 @@ class Car extends CActiveRecord
         $text = $this->naslov;
         $via = '';
         $hashtags = '';
-        $link = 'https://twitter.com/share?url='.$url.'&text='.$text.'&via='.$via.'&hashtags='.$hashtags;
-//        return 'http://twitter.com/share?url=' . $carUrl . '&text=' . $this->naslov . '&count=horiztonal';
+        $link = 'https://twitter.com/share?url='.$url.'&text='.$text.(($via)?'&via='.$via:'').(($hashtags)?'&hashtags='.$hashtags:'');
         return $link;
     }
 

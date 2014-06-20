@@ -14,3 +14,8 @@ $('.social-share').click(function(e){
 
     return false;
 });
+
+$('.toggle-mobile-menu').click(function(e){
+    e.preventDefault();
+    $('.mobile-menu').slideToggle('slow');
+});

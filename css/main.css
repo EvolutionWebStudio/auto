@@ -184,6 +184,10 @@ header {
         background: #444;
     }
 
+.mobile-menu {
+    display: none;
+}
+
 /* CAR LIST */
 
 .car-list .car-list-item {
@@ -727,7 +731,6 @@ footer {
         margin-left: 0;
     }
 
-
     .car-list .car-title {
         margin-top: .5em;
     }
@@ -783,6 +786,13 @@ footer {
 
     .promo-area {
         display: block;
+    }
+
+    .toggle-mobile-menu {
+        display: none!important;
+    }
+    .mobile-menu {
+        display: block!important;
     }
 }
 /* min-width 1000px, large screens */
