@@ -89,6 +89,7 @@ textarea {
 
 .main-wrapper {
     background: #f0f0f0;
+    overflow: hidden;
 }
 .content {
     margin-left: 0;
@@ -691,6 +692,13 @@ footer {
         right: 19px;
     }
 
+    .one-car .car-title {
+        font-size: 1.3em;
+    }
+    .one-car .car-description p {
+        font-size: .95em;
+        line-height: 1.4em;
+    }
 
 }
 /* max-width 640px, mobile-only styles, use when QAing mobile issues */
