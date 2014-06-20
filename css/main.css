@@ -710,7 +710,7 @@ footer {
     }
 }
 /* min-width 641px, medium screens */
-@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+@media only screen and (min-width: 40.063em) and (max-width: 62.44em) {
 
     .content {
         padding-left: 15px;
@@ -730,7 +730,7 @@ footer {
 /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
 
 /*Large screens */
-@media only screen and (min-width: 64.063em) {
+@media only screen and (min-width: 62.5em) {
     .car-list .car-info {
         padding-left: 0;
     }
@@ -739,9 +739,9 @@ footer {
         display: block;
     }
 }
-/* min-width 1025px, large screens */
-@media only screen and (min-width: 64.063em) and (max-width: 90em) { }
-/* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
+/* min-width 1000px, large screens */
+@media only screen and (min-width: 62.5em) and (max-width: 90em) { }
+/* min-width 1000px and max-width 1440px, use when QAing large screen-only issues */
 
 /*XLarge screens */
 @media only screen and (min-width: 90.063em) { }

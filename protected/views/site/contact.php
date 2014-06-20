@@ -7,7 +7,7 @@ $this->pageTitle= 'Kontakt | '. Yii::app()->name;
 
 ?>
 
-<div class="page kontakt">
+<div class="page kontakt clearfix">
     <div class="small-12 columns">
         <h1 class="page-title">Kontaktirajte nas</h1>
     </div>
