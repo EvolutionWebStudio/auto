@@ -25,7 +25,7 @@ jQuery('#Images-grid a.fa-chevron-up').live('click',function() {
 });
 ");
 
-$imageUrl = Yii::app()->getBaseUrl(true).'/media/'.Mark::getLinkName($model->mark_id).'/'. $model->id.'/thumbs/';
+$imageUrl = Yii::app()->getBaseUrl(true).'/media/'.Mark::getFolderName($model->mark_id).'/'. $model->id.'/thumbs/';
 
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'Images-grid',

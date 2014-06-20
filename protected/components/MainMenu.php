@@ -14,8 +14,8 @@ class MainMenu extends CMenu
 	public function buildMenu()
 	{
 		$criteria = new CDbCriteria;
-		$criteria->join = 'RIGHT JOIN Car on t.id = car.mark_id';
-		$criteria->condition = 'Car.is_active = 1';
+		$criteria->join = 'RIGHT JOIN car on t.id = car.mark_id';
+		$criteria->condition = 'car.is_active = 1';
 		$criteria->distinct=true;
 		$criteria->select = 'name, t.id';
 		$menus = Mark::model()->findAll($criteria);
@@ -34,6 +34,9 @@ class MainMenu extends CMenu
 			$html.="<li>".CHtml::link('Na akciji', array('car/index','stanje'=>'na-akciji'), array('class'=>'strong text-red'))."</li>";
 			if(Car::model()->hasUDolasku())$html.="<li>".CHtml::link('U dolasku', array('car/index','stanje'=>'u-dolasku'), array('class'=>'strong'))."</li>";
 		endif;
+		$html.="<li>".CHtml::link('Prikaži meni', '#', array('class'=>'toggle-mobile-menu'))."</li>";
+		$html.="</ul>";
+		$html.="<ul class='mobile-menu'>";
 		if(isset($_GET['proizvodjac']))
 			foreach ($menus as $menu) {
 				$html.="<li>".CHtml::link(
