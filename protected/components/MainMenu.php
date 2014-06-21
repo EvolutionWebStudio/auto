@@ -9,8 +9,6 @@ Yii::import('zii.widgets.CMenu', true);
 
 class MainMenu extends CMenu
 {
-
-
 	public function buildMenu()
 	{
 		$criteria = new CDbCriteria;
@@ -20,7 +18,6 @@ class MainMenu extends CMenu
 		$criteria->select = 'name, t.id';
 		$menus = Mark::model()->findAll($criteria);
 		$html = "";
-
 
 		$html.="<ul id='yw2' class='sf-js-enabled'>";
 		if(!isset($_GET['stanje']) && !isset($_GET['proizvodjac']) && Yii::app()->controller->id == 'car' && Yii::app()->controller->action->id == 'index')
@@ -43,19 +40,14 @@ class MainMenu extends CMenu
 						$menu->name,
 						array('car/index','proizvodjac'=>Mark::getLinkName($menu->id)),
 						($_GET['proizvodjac'] == strtolower($menu->name))? array('class'=>'active') : array())."</li>";
-
 			}
 		else
 			foreach ($menus as $menu) {
 				$html.="<li>".CHtml::link(
 						$menu->name,
 						array('car/index','proizvodjac'=>strtolower($menu->name)))."</li>";
-
 			}
 		$html.="</ul>";
-
-
-
 		return $html;
 	}
 	public function init()
@@ -63,6 +55,4 @@ class MainMenu extends CMenu
 		echo $this->buildMenu();
 		parent::init();
 	}
-
-
 }

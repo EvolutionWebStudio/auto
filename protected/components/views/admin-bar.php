@@ -3,7 +3,7 @@
 		<li class="name">
 		</li>
 		<li class="toggle-topbar menu-icon">
-			<a href="#"><span>Meni</span></a>
+			<a href="#"><span><span class="fa fa-chevron-down"></span> Administracija</span></a>
 		</li>
 	</ul>
 	<section class="top-bar-section"> <!-- Right Nav Section -->

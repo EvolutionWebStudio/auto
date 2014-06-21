@@ -53,11 +53,11 @@
         <div class="large-3 columns">
             <?php echo $form->labelEx($model,'snaga'); ?>
             <div class="row collapse">
-                <div class="large-9 columns">
+                <div class="small-9 columns">
                     <?php echo $form->textField($model,'snaga',array('size'=>45,'maxlength'=>45)); ?>
                     <?php echo $form->error($model,'snaga'); ?>
                 </div>
-                <div class="large-3 columns">
+                <div class="small-3 columns">
                     <span class="postfix">kW</span>
                 </div>
             </div>
@@ -66,11 +66,11 @@
         <div class="large-3 columns">
             <?php echo $form->labelEx($model,'kilometraza'); ?>
             <div class="row collapse">
-                <div class="large-9 columns">
+                <div class="small-9 columns">
                     <?php echo $form->textField($model,'kilometraza'); ?>
                     <?php echo $form->error($model,'kilometraza'); ?>
                 </div>
-                <div class="large-3 columns">
+                <div class="small-3 columns">
                     <span class="postfix">km</span>
                 </div>
             </div>
@@ -107,11 +107,11 @@
         <div class="large-4 columns">
             <div class="row collapse">
                 <?php echo $form->labelEx($model,'cijena'); ?>
-                <div class="large-9 columns">
+                <div class="small-9 columns">
                     <?php echo $form->textField($model,'cijena',array('size'=>45,'maxlength'=>45)); ?>
                     <?php echo $form->error($model,'cijena'); ?>
                 </div>
-                <div class="large-3 columns">
+                <div class="small-3 columns">
                     <span class="postfix">KM</span>
                 </div>
             </div>
@@ -121,10 +121,10 @@
     <div class="row">
             <div class="large-3 columns">
                 <div class="row">
-                    <div class="large-2 columns">
+                    <div class="small-2 columns">
                         <?php echo $form->checkBox($model,'u_dolasku'); ?>
                     </div>
-                    <div class="large-10 columns">
+                    <div class="small-10 columns">
                         <?php echo $form->labelEx($model,'u_dolasku', array('class' => ' ')); ?>
                     </div>
                 </div>
@@ -134,10 +134,10 @@
     <div class="row">
             <div class="large-3 columns">
                 <div class="row">
-                    <div class="large-2 columns">
+                    <div class="small-2 columns">
                         <?php echo $form->checkBox($model,'na_akciji'); ?>
                     </div>
-                    <div class="large-10 columns">
+                    <div class="small-10 columns">
                         <?php echo $form->labelEx($model,'na_akciji', array('class' => '')); ?>
                     </div>
                 </div>

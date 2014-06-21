@@ -186,6 +186,7 @@ header {
 
 .mobile-menu {
     display: none;
+    border-top: 1px solid #ddd;
 }
 
 /* CAR LIST */
@@ -416,9 +417,12 @@ header {
 
 .admin-buttons {
     position: absolute;
-
+    z-index: 1000;
 }
-.car-list .admin-buttons{
+    .admin-buttons .button-group {
+        margin-top: 0;
+    }
+.car-list .admin-buttons {
     right: 4px;
     top: 4px;
 }
