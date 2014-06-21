@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta naem="language" content="sr"/>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 

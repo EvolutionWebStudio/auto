@@ -195,34 +195,6 @@ class Car extends CActiveRecord
 
     }
 
-    /**
-     * Returns custom facebook share link for this car
-     */
-    public function getFacebookShareUrl($carUrl)
-    {
-        $url = Yii::app()->request->getBaseUrl(true).$carUrl;
-        $title = $this->naslov;
-        $description = strip_tags($this->opis);
-        $image = $this->getMainImage('slider');
-
-        $link = 'http://www.facebook.com/sharer.php?s=100&p[url]='.$url.'&p[images][0]='.$image.'&p[title]='.$title.'&p[summary]='.$description;
-//        return 'https://www.facebook.com/sharer/sharer.php?s=100&p[title]="' . $this->naslov . '"&p[summary]="' . strip_tags($this->opis) . '"&p[url]=' . Yii::app()->request->getBaseUrl(true).$carUrl . '&p[images][0]='.$this->getMainImage('slider');
-        return $link;
-    }
-
-    /**
-     * Returns custom facebook share link for this car
-     */
-    public function getTwitterShareUrl($carUrl)
-    {
-        $url = Yii::app()->request->getBaseUrl(true).$carUrl;
-        $text = $this->naslov;
-        $via = '';
-        $hashtags = '';
-        $link = 'https://twitter.com/share?url='.$url.'&text='.$text.(($via)?'&via='.$via:'').(($hashtags)?'&hashtags='.$hashtags:'');
-        return $link;
-    }
-
     public function getShortDescription()
     {
 	    $opis = strip_tags($this->opis);

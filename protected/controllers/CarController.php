@@ -68,8 +68,28 @@ class CarController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+        $model = $this->loadModel($id);
+
+        $postUrl = Yii::app()->request->getBaseUrl(true).CController::createUrl($model->mark->getLinkName($model->mark_id).'/'.$model->id);
+        $socialPost = new SocialPost(array(
+            'url' => urlencode($postUrl),
+            'title' => $model->naslov,
+            'description' => substr(strip_tags($model->opis),0,220),
+            'image' => $model->getMainImage()
+        ));
+
+        $this->metaData->setMetaData(array(
+            'title' => $model->naslov . ' | Auto Rašević Pale',
+            'description' => substr(strip_tags($model->opis),0,220),
+            'image' => $model->getMainImage(),
+            'url' => $postUrl,
+        ));
+        $this->metaData->useAllMetaData();
+
+        $this->render('view',array(
+			'model'=>$model,
+            'fbUrl' => $socialPost->getFacebookShareUrl(),
+            'twUrl' => $socialPost->getTwitterShareUrl()
 		));
 	}
 

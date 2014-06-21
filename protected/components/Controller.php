@@ -5,6 +5,8 @@
  */
 class Controller extends CController
 {
+    public $metaData;
+
 	/**
 	 * @var string the default layout for the controller view. Defaults to '//layouts/column1',
 	 * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
@@ -22,6 +24,14 @@ class Controller extends CController
 	public $breadcrumbs=array();
 
 	public function init() {
-        Yii::app()->clientScript->registerMetaTag('Auto plac Rasevic Pale, Vam nudi sirok asortiman polovnih automobila, mogucnost zamjene staro za novo kao i mogucnost kupovine na lizing.', 'description', null, array('lang' => 'sr'),1);
+        $this->metaData = new MetaData(array(
+            'title' => 'Auto Rašević Pale',
+            'description' => 'Auto plac Rašević na Palama Vam nudi širok asortiman polovnih automobila, mogućnost zamjene staro za novo kao i mogućnost kupovine na lizing.',
+            'image' => 'autorasevic.com/img/autorasevic-logo-social-image.png',
+            'url' => 'autorasevic.com',
+            'keywords' => 'polovni automobili, republika srpska, bosna i hercegovina, automobil, polovan auto, vozilo, kupovina auta',
+            'language' => 'sr',
+            'type' => 'article'
+        ));
 	}
 }

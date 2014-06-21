@@ -1,6 +1,10 @@
 <?php
-/* @var $this CarController */
-/* @var $model Car */
+/*
+ *  @var $this CarController
+ *  @var $model Car
+ *  @var fbUrl
+ *  @var twUrl
+ */
 
 $this->pageTitle = $model->naslov .' | ' . Yii::app()->name;
 $metaDescription = $model->getShortDescription();
@@ -103,11 +107,9 @@ $imagesPath = Yii::app()->baseUrl.'/media/'.Mark::getFolderName($model->mark_id)
             <?php echo $model->cijena . ' KM'; ?>
         </div>
         <ul class="button-group social-buttons">
-            <li>
-<!--                <a href="--><?php //echo urldecode($model->getFacebookShareUrl(Yii::app()->request->url)); ?><!--" class="button facebook small social-share" target="_blank" rel="nofollow"><span class="fa fa-facebook"></span> Share</a>-->
+            <li><?php echo CHtml::link('<span class="fa fa-facebook"></span> Share', $fbUrl, array('rel' => 'nofollow', 'target' => '_blank', 'class' => 'button facebook small social-share')); ?></li>
+            <li><?php echo CHtml::link('<span class="fa fa-twitter"></span> Tweet', $twUrl, array('rel' => 'nofollow', 'target' => '_blank', 'class' => 'button twitter small social-share')); ?></li>
 
-                <?php echo CHtml::link('<span class="fa fa-facebook"></span> Share', $model->getFacebookShareUrl(Yii::app()->request->url), array('rel' => 'nofollow', 'target' => '_blank', 'class' => 'button facebook small social-share')); ?></li>
-            <li><?php echo CHtml::link('<span class="fa fa-twitter"></span> Tweet', $model->getTwitterShareUrl(Yii::app()->request->url), array('rel' => 'nofollow', 'target' => '_blank', 'class' => 'button twitter small social-share')); ?></li>
         </ul>
     </div>
 </div>
@@ -118,5 +120,4 @@ $cs = Yii::app()->getClientScript();
 $cs->registerScriptFile($baseUrl.'/js/vendor/jquery.bxslider/jquery.bxslider.min.js', CClientScript::POS_END);
 $cs->registerCssFile($baseUrl.'/js/vendor/jquery.bxslider/jquery.bxslider.css');
 $cs->registerScript("bindBxslider","$('.bxslider').bxSlider({uceCSS:false,adaptiveHeight: true});", CClientScript::POS_END);
-$cs->registerMetaTag($metaDescription, 'description', null, array('lang' => 'sr'),1);
 ?>
