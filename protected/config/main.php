@@ -59,10 +59,8 @@ return array(
 			),
 		),
 
-
-		// uncomment the following to use a MySQL database
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=autorase_rasevic',
+			'connectionString' => 'mysql:host=localhost;dbname=autorase_rasvic',
 			'emulatePrepare' => true,
 			'username' => 'autorase_rasevic',
 			'password' => 'r8%-Eg-&fTR2',
@@ -93,6 +91,6 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'adminEmail'=>'autorasevic@yahoo.com',
 	),
 );

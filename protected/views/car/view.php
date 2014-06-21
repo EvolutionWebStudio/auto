@@ -3,7 +3,7 @@
 /* @var $model Car */
 
 $this->pageTitle = $model->naslov .' | ' . Yii::app()->name;
-
+$metaDescription = $model->getShortDescription();
 $imagesPath = Yii::app()->baseUrl.'/media/'.Mark::getFolderName($model->mark_id).'/'.$model->id;
 ?>
 
@@ -118,4 +118,5 @@ $cs = Yii::app()->getClientScript();
 $cs->registerScriptFile($baseUrl.'/js/vendor/jquery.bxslider/jquery.bxslider.min.js', CClientScript::POS_END);
 $cs->registerCssFile($baseUrl.'/js/vendor/jquery.bxslider/jquery.bxslider.css');
 $cs->registerScript("bindBxslider","$('.bxslider').bxSlider({uceCSS:false,adaptiveHeight: true});", CClientScript::POS_END);
+$cs->registerMetaTag($metaDescription, 'description', null, array('lang' => 'sr'),1);
 ?>

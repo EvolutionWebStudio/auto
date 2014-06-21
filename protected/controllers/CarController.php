@@ -181,6 +181,7 @@ class CarController extends Controller
 				),
 			));
             $this->pageTitle = Mark::getName($proizvodjac) . ' | ' . Yii::app()->name;
+			Yii::app()->clientScript->registerMetaTag('Auto plac Rasevic Pale, Vam nudi sirok asortiman polovnih automobila marke '.Mark::getName($proizvodjac).', mogucnost zamjene staro za novo kao i mogucnost kupovine na lizing.', 'description', null, array('lang' => 'sr'),1);
 		}
 		else {
 			$dataProvider=new CActiveDataProvider('Car',array(

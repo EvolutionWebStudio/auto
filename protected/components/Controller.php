@@ -20,4 +20,8 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+
+	public function init() {
+        Yii::app()->clientScript->registerMetaTag('Auto plac Rasevic Pale, Vam nudi sirok asortiman polovnih automobila, mogucnost zamjene staro za novo kao i mogucnost kupovine na lizing.', 'description', null, array('lang' => 'sr'),1);
+	}
 }
