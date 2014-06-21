@@ -170,6 +170,8 @@ class CarController extends Controller
 	 */
 	public function actionIndex()
 	{
+
+        $this->pageTitle = Yii::app()->name;
 		if(isset($_GET['stanje'])) {
 			$stanje = str_replace('-','_',$_GET['stanje']);
 			if($stanje === 'u_dolasku' || $stanje === 'na_akciji')
@@ -200,7 +202,14 @@ class CarController extends Controller
 					'pageSize'=>50
 				),
 			));
+
             $this->pageTitle = Mark::getName($proizvodjac) . ' | ' . Yii::app()->name;
+
+            $this->metaData->setMetaData(array(
+                'title' => Mark::getName($proizvodjac). ' | Auto Rašević Pale',
+                'description' => 'Auto plac Rasevic Pale, Vam nudi sirok asortiman polovnih automobila marke '.Mark::getName($proizvodjac).', mogucnost zamjene staro za novo kao i mogucnost kupovine na lizing.',
+                'url' => Yii::app()->request->getBaseUrl(true).CController::createUrl(Mark::getName($proizvodjac))
+            ));
 			Yii::app()->clientScript->registerMetaTag('Auto plac Rasevic Pale, Vam nudi sirok asortiman polovnih automobila marke '.Mark::getName($proizvodjac).', mogucnost zamjene staro za novo kao i mogucnost kupovine na lizing.', 'description', null, array('lang' => 'sr'),1);
 		}
 		else {
@@ -226,6 +235,8 @@ class CarController extends Controller
 			'id'=>CSort::SORT_DESC,
 		);
 		$dataProvider->sort->sortVar = 'sort';
+
+        $this->metaData->useAllMetaData();
 
 		$this->render('index',array(
 			'dataProvider'=> $dataProvider,

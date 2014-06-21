@@ -2,8 +2,6 @@
 /* @var $this CarController */
 /* @var $dataProvider CActiveDataProvider */
 
-$this->pageTitle = Yii::app()->name;
-
 $listSettings = array(
     'dataProvider'=>$dataProvider,
     'itemView'=>'_'.$carViewType,
