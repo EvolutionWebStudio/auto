@@ -89,10 +89,12 @@ textarea {
 
 body {
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    background: url('../img/light_noise_diagonal.png');
 }
 .main-wrapper {
     background: #f0f0f0;
     overflow: hidden;
+    box-shadow: 0 0 5px #999;
 }
 .content {
     margin-left: 0;
