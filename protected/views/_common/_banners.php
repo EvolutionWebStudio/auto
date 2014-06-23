@@ -29,7 +29,7 @@
     </a>
 </div>
 <div class="banner video-banner">
-    <a class="video"  title="Auto Rašević video" href="http://www.youtube.com/watch?v=gScWe498GhQ" target="_blank">
+    <a class="video video-popup"  title="Auto Rašević video" href="http://www.youtube.com/watch?v=gScWe498GhQ" target="_blank">
         <img src="<?php echo Yii::app()->request->getBaseUrl() . '/img/banners/auto-rasevic-video.png'; ?>" alt="Auto Rašević video"/>
     </a>
 </div>

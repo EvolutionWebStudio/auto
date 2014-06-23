@@ -1,4 +1,6 @@
 
+$(document).foundation();
+
 $('.social-share').click(function(e){
     e.preventDefault();
 
@@ -18,4 +20,8 @@ $('.social-share').click(function(e){
 $('.toggle-mobile-menu').click(function(e){
     e.preventDefault();
     $('.mobile-menu').slideToggle('slow');
+});
+
+$('.video-popup').magnificPopup({
+    type: 'iframe'
 });

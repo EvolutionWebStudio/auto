@@ -77,19 +77,20 @@
     </div>
 
 	<?php Yii::app()->clientScript->registerCoreScript('jquery'); ?>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/foundation.min.js"></script>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/plugins.js"></script>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script>
+    <?php
+    $baseUrl = Yii::app()->baseUrl;
+    $cs = Yii::app()->getClientScript();
+    $cs->registerScriptFile($baseUrl.'/js/foundation.min.js', CClientScript::POS_END);
+    $cs->registerScriptFile($baseUrl.'/js/vendor/magnific-popup/jquery.magnific-popup.min.js', CClientScript::POS_END);
+    $cs->registerScriptFile($baseUrl.'/js/main.js', CClientScript::POS_END);
+    $cs->registerCssFile($baseUrl.'/js/vendor/magnific-popup/magnific-popup.css');
+    ?>
 
     <!--
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/foundation/foundation.forms.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/foundation/foundation.abide.js"></script>
     -->
-
-    <script>
-        $(document).foundation();
-    </script>
-
+    
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
