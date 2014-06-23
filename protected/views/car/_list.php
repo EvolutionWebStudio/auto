@@ -5,7 +5,7 @@
 Yii::app()->clientScript->registerScript('popup', "
     $('.show-popup').bind('click', function(e){
         e.preventDefault();
-        $('.fa-search').addClass('.fa-spinner').removeClass('.fa-search');
+        $('.fa-search').addClass('fa-spinner').removeClass('fa-search');
         url = '". CController::createUrl('car/images') . "/' + $(this).attr('data-id');
         allImages = '';
         parent = this;
@@ -20,7 +20,7 @@ Yii::app()->clientScript->registerScript('popup', "
                     },
                     type: 'image'
                 });
-                $('.fa-spinner').addClass('.fa-search').removeClass('.fa-spinner');
+                $('.fa-spinner').addClass('fa-search').removeClass('fa-spinner');
             }
         });
      });

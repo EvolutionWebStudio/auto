@@ -5,6 +5,7 @@
  * Date: 6/14/14
  * Time: 7:52 PM
  */
+
 Yii::app()->clientScript->registerScript('up',"
 jQuery('#Images-grid a.fa-chevron-up').live('click',function() {
         var th=this;
