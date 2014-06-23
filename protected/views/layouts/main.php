@@ -60,6 +60,12 @@
                     <div class="promo-area">
                         <?php $this->renderPartial('//_common/_banners'); ?>
                     </div>
+                    <div class="app-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.milansamardzic.autorasevic" class="android-app" target="_blank">
+                            <span class="fa fa-android"></span> Android aplikacija
+                        </a>
+                        <img src="<?php echo Yii::app()->request->getBaseUrl(); ?>/img/autorasevic-android-app-qrcode.png" alt="" class="android-app-qr"/>
+                    </div>
                 </div>
 
                 <div class="large-9 columns content">
