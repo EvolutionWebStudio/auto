@@ -30,6 +30,9 @@
 			<li>
 				<?php echo CHtml::link('<span class="fa fa-pencil"></span> Kontakt',array('contact/update/1')); ?>
 			</li>
+			<li>
+				<?php echo CHtml::link('<span class="fa fa-sort"></span> Sortiraj automobile',array('site/sortiranje')); ?>
+			</li>
 		</ul>
 	</section>
 </nav>

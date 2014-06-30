@@ -114,4 +114,18 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+	public function actionSortiranje()
+	{
+		$model=new CActiveDataProvider('Car',array(
+			'criteria'=>array(
+				'condition'=>'is_active=1',
+				'order'=>'sort_order ASC',
+			),
+			'pagination'=>array(
+				'pageSize'=>50
+			),
+		));
+		$this->render('sortiranje',array('model'=>$model));
+	}
 }

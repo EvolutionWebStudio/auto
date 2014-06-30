@@ -20,6 +20,7 @@
  * @property integer $mark_id
  * @property integer $user_id
  * @property integer $is_active
+ * @property integer $sort_order
  *
  * The followings are the available model relations:
  * @property Mark $mark
@@ -45,13 +46,13 @@ class Car extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('mark_id, user_id', 'required'),
-			array('godiste, kilometraza, u_dolasku, na_akciji, mark_id, user_id, is_active', 'numerical', 'integerOnly'=>true),
+			array('godiste, kilometraza, u_dolasku, na_akciji, mark_id, user_id, is_active, sort_order', 'numerical', 'integerOnly'=>true),
 			array('naslov, model', 'length', 'max'=>120),
 			array('snaga, gorivo, transmisija, boja, cijena', 'length', 'max'=>45),
 			array('opis', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, naslov, model, godiste, snaga, kilometraza, gorivo, transmisija, boja, cijena, opis, u_dolasku, na_akciji, mark_id, user_id, is_active', 'safe', 'on'=>'search'),
+			array('id, naslov, model, godiste, snaga, kilometraza, gorivo, transmisija, boja, cijena, opis, u_dolasku, na_akciji, mark_id, user_id, is_active, sort_order', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -91,6 +92,7 @@ class Car extends CActiveRecord
 			'mark_id' => 'Proizvođač',
 			'user_id' => 'User',
 			'is_active' => 'Is Active',
+			'sort_order' => 'Sortiranje',
 		);
 	}
 
@@ -128,6 +130,8 @@ class Car extends CActiveRecord
 		$criteria->compare('mark_id',$this->mark_id);
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('is_active',1);
+		$criteria->compare('sort_order',$this->sort_order);
+		$criteria->order = 'sort_order ASC';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -229,5 +233,12 @@ class Car extends CActiveRecord
 		if(!$uDolasku)
 			return false;
 		return true;
+	}
+
+	public static function maxOrder() {
+		return Yii::app()->db->createCommand()
+			->select('MAX(sort_order)')
+			->from('car')
+			->queryScalar();
 	}
 }

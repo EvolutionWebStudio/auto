@@ -32,7 +32,7 @@ class CarController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','obrisi'),
+				'actions'=>array('create','update','obrisi','sort'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -110,6 +110,7 @@ class CarController extends Controller
 
 			$model->user_id = Yii::app()->user->id;
 			$model->is_active = 1;
+			$model->sort_order = Car::maxOrder()+1;
 			if($model->save())
 			{
 				$this->uploadImages($model);
@@ -231,8 +232,8 @@ class CarController extends Controller
             }
         }
 
-		$dataProvider->sort->defaultOrder = array(
-			'id'=>CSort::SORT_DESC,
+		$dataProvider->sort = array(
+			'defaultOrder'=>'sort_order ASC',
 		);
 		$dataProvider->sort->sortVar = 'sort';
 
@@ -427,4 +428,17 @@ class CarController extends Controller
         $model=$this->loadModel($id);
         echo $model->getAllImages();
     }
+
+	public function actionSort()
+	{
+		if (isset($_POST['items']) && is_array($_POST['items'])) {
+			$i = 0;
+			foreach ($_POST['items'] as $item) {
+				$project = Car::model()->findByPk($item);
+				$project->sort_order = $i;
+				$project->save();
+				$i++;
+			}
+		}
+	}
 }
