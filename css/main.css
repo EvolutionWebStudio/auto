@@ -625,7 +625,25 @@ footer {
     height: 46px;
 }
 
-
+.car-sorting .grid-view {
+    padding: .5em;
+    background: #fff;
+    border: none;
+}
+.car-sorting .items {
+    border: none;
+}
+.car-sorting .grid-view .items td {
+    padding: .7em 1em;
+    cursor: pointer;
+}
+    .car-sorting .ui-sortable-helper {
+        border: 1px solid #ddd;
+    }
+    .car-sorting .ui-sortable-placeholder {
+        display: block;
+        border: 1px dashed #bbb;
+    }
 
 
 /* ==========================================================================
