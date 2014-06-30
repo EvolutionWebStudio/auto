@@ -772,6 +772,12 @@ footer {
     /* Style adjustments for high resolution devices */
 }
 
+/*@media only handheld {*/
+    /*.android-app {*/
+        /*display: none;*/
+    /*}*/
+/*}*/
+
 /*Small screens */
 @media only screen { }
 /* Define mobile styles */
