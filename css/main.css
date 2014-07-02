@@ -560,10 +560,10 @@ fieldset legend {
 
 .promo-area {
     display: none;
-    margin-top: 1em;
+    margin-top: 1.5em;
 }
 .banner {
-    margin-bottom: 1px;
+    margin-bottom: 2px;
 }
     .banner img {
         width: 100%;

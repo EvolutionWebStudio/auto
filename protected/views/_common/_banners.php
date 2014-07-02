@@ -10,7 +10,7 @@
 
 <div class="banner dva-goluba-banner">
     <a href="http://dvagolubapale.com" title="Dva Goluba Pale" target="_blank">
-        <img src="<?php echo Yii::app()->request->getBaseUrl() . '/img/banners/dva-goluba-pale.gif'; ?>" alt="Hotel Dva Goluba Pale"/>
+        <img src="<?php echo Yii::app()->request->getBaseUrl() . '/img/banners/dva-goluba-pale-2.gif'; ?>" alt="Hotel Dva Goluba Pale"/>
     </a>
 </div>
 <div class="banner pik-banner">
