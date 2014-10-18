@@ -35,17 +35,18 @@
                     <a href="<?php echo Yii::app()->request->getBaseUrl(true); ?>">
                         <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/zuti-logo-auto-rasevic.png"/>
                     </a>
+	                <div class="info-menu">
+		                <ul>
+			                <li><?php echo CHtml::link('O nama',array('site/o_nama')); ?></li>
+			                <li><?php echo CHtml::link('Kontakt',array('site/kontakt')); ?></li>
+		                </ul>
+	                </div>
                 </div>
                 <div class="large-6 medium-6 columns">
                     <div class="car-logos show-for-medium-up">
-                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/auto-rasevic-header-car-logos.png"/>
+                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/mis.jpg"/>
                     </div>
-                    <div class="info-menu">
-	                    <ul>
-		                    <li><?php echo CHtml::link('O nama',array('site/o_nama')); ?></li>
-		                    <li><?php echo CHtml::link('Kontakt',array('site/kontakt')); ?></li>
-	                    </ul>
-                    </div>
+
                 </div>
             </header>
 
